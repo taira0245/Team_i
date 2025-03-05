@@ -8,4 +8,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Kidani/Scenes/GameScene.unity
+    guid: 8a73906b2d75e0946bc5dc8220ffe98a
+  - enabled: 1
+    path: Assets/Kidani/Scenes/TitleScene.unity
+    guid: 5217194e9a64fd94db9db2293609e1e4
+  - enabled: 1
+    path: Assets/Kidani/Scenes/OptionScene.unity
+    guid: 676638136dcc62c4b8bc627e80ed4c60
+  - enabled: 1
+    path: Assets/Kidani/Scenes/TutorialScene.unity
+    guid: efbaf9c088b7de34e93cc5f6629e8ab3
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
