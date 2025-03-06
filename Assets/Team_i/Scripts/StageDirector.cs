@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class StageDirector : MonoBehaviour
 {
-    [Header("タイマーUIの設定")]
+    [Header("ステージ情報")]
+    [SerializeField] ScoreMG.E_ScoreType saveType = ScoreMG.E_ScoreType.Stage1;
+
+    [Header("UIの設定")]
     [Tooltip("Timerインスタンス参照")]
     [SerializeField] Timer timer_;
 
@@ -18,24 +21,37 @@ public class StageDirector : MonoBehaviour
     int oldHp = 0; //1フレーム前の、HP
 
 
-    int hp = 0;
     bool isGame = false;
     bool gameover_Flag = false;
+
 
     /// <summary>
     /// ゲーム開始時の初期化処理
     /// </summary>
     void StartInit()
     {
+        AudioMG.PlayBGM("TestBGM");
+
         isGame = true;
         gameover_Flag = false;
-        hp = 3;
         elapsed_time = 0;
         oldHitCnt = 0;
         timer_.PlayAnim();
 
         oldHp = player_.hp;
         oldHitCnt = player_.count;
+
+        //================
+        // Debug
+#if UNITY_EDITOR
+        Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
+        Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");
+        Debug.Log("<color=green>hitPoint_ : " + hitPoint_ + "</color>");
+        Debug.Log("<color=green>player_ : " + player_ + "</color>");
+
+#endif
+        //=================
+
     }
 
     
@@ -54,10 +70,9 @@ public class StageDirector : MonoBehaviour
         }
     }
 
+    [Header("遷移先シーンの設定")]
     [SerializeField] string nextSceneName = default!;
 
-    [SerializeField] PlayerDirector playerDirector_;
-    PlayerDirector.E_PLState crPLState;
 
     [Header("ゲーム時間の設定")]
     [SerializeField] float game_time = 30;
@@ -66,14 +81,15 @@ public class StageDirector : MonoBehaviour
     /// <summary>
     /// PLStateの一時保存
     /// </summary>
-    void SavePLParam()
+    void PlPramUpdate()
     {
-        oldHitCnt = player_.hp;
+        oldHp = player_.hp;
         oldHitCnt = player_.count;
     }
 
     void ChangeHP()
     {
+        Debug.Log("ダメージ処理(UI)!");
         hitPoint_.Damage();
     }
 
@@ -91,7 +107,7 @@ public class StageDirector : MonoBehaviour
 
         if (player_.hp != oldHp) { ChangeHP(); }
         if (player_.count != oldHitCnt) { ChangeCount(); }
-        SavePLParam();
+        PlPramUpdate();
 
         //ゲームオーバー処理
         if (player_.hp <= 0) {
@@ -117,6 +133,10 @@ public class StageDirector : MonoBehaviour
     void GameTerminate()
     {
         timer_.GameEnd();
+
+        //記録を更新
+        ScoreMG.SaveScoreData(player_.count, player_.hp, saveType);
+
         Cursor.visible = true;
         SceneManager.LoadScene(nextSceneName);
     }

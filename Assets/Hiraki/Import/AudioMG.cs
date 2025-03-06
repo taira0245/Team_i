@@ -5,12 +5,12 @@ using System.Xml.Linq;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-//using UnityEditor.SceneManagement;
 using Unity.VisualScripting;
+using AudioSetting;
 
 /// <summary>
 /// BGMとSEの管理を行う　シングルトン
-/// フェードしてBGMStop、BGMフェード(255行目)以外、https://qiita.com/2dgames_jp/items/20360f9797c7e8b166bc参考
+/// BGMだけスクリプタブルオブジェクト用にちょっと魔改造
 /// </summary>
 public class AudioMG
 {
@@ -71,19 +71,17 @@ public class AudioMG
     public class Data
     {
         public string Key;      //アクセス用のキー
-        public string ResName;  //リソース名
         public AudioClip Clip;  //AudioClip
 
         //コンストラクタ
-        public Data(string key, string resName, string filePath)
+        public Data(SetAudioData.AudioData audioData)
         {
-            Key = key;
-            ResName = filePath + resName;
-            //AudioClipの取得
-            Clip = Resources.Load(ResName) as AudioClip;
-            if (Clip == null) Debug.Log("AudioClip == null  AudioMG.cs");
+            Key = audioData.Key;
+            Clip = audioData.AudioFile;
+            if (Clip == null) Debug.Log("AudioClip == null");
         }
     }
+
 
     //============================
     //AudioManagerのコンストラクタ
@@ -92,6 +90,10 @@ public class AudioMG
         //チャンネル確保用
         sourceBGMArray_ = new AudioSource[BGM_CHANNEL];
         sourceSEArray_ = new AudioSource[SE_CHANNEL];
+
+        //今回は暫定的に、ゲームを起動するたびに音量をDefault値に設定する
+        PlayerPrefs.SetFloat(BGM_VOLUME_KEY, BGM_VOLUME_DEFULT);
+        PlayerPrefs.SetFloat(SE_VOLUME_KEY, SE_VOLUME_DEFULT);
     }
 
     //AudioSourceを取得する
@@ -146,8 +148,24 @@ public class AudioMG
         sourceLoopSE_.playOnAwake = false;
         sourceLoopSE_.loop = true;
 
+
+        //SoundDataの読込
+        string path = "Audio/";
+        string[] fileNames = { "BGM_Setting", "SE_Setting", "LoopSE_Setting" };
+        var array = new Dictionary<string, Data>[] { poolBGM, poolSE, poolLoopSE };
+        for (int i = 0; i < fileNames.Length; i++) {
+            var BGMData = Resources.Load<SetAudioData>(path + fileNames[i]);
+            foreach (var data in BGMData.AudioList) {
+                var key = data.Key;
+                if (array[i].ContainsKey(key)) array[i].Remove(key);
+                array[i].Add(key, new Data(data));
+            }
+            Debug.Log(fileNames[i] + ".Count : " + array[i].Count);
+        }
+
+
         //ChangeVolume()を利用してvolumeを設定
-        SetChangeVolume(PlayerPrefs.GetFloat(BGM_VOLUME_KEY), PlayerPrefs.GetFloat(SE_VOLUME_KEY));
+        ChangeVolume(PlayerPrefs.GetFloat(BGM_VOLUME_KEY), PlayerPrefs.GetFloat(SE_VOLUME_KEY));
     }
 
     void CreateObj()
@@ -171,31 +189,6 @@ public class AudioMG
     public static void ClearLoopSEData() { Instance.poolLoopSE.Clear(); }
 
 
-    // 各Audioファイルの読み込み
-    public static void LoadBGM(string key, string resName) { Instance.SetAudio(key, resName, E_AudioType.BGM); }
-    public static void LoadSE(string key, string resName) { Instance.SetAudio(key, resName, E_AudioType.SE); }
-    public static void LoadLoopSE(string key, string resName) { Instance.SetAudio(key, resName, E_AudioType.LoopSE); }
-
-
-    void SetAudio(string key, string resName, E_AudioType type)
-    {
-        switch (type) {
-            case E_AudioType.BGM:
-                if (poolBGM.ContainsKey(key)) poolBGM.Remove(key);
-                poolBGM.Add(key, new Data(key, resName, BGM_PATH));
-                break;
-            case E_AudioType.SE:
-                if (poolSE.ContainsKey(key)) poolSE.Remove(key);
-                poolSE.Add(key, new Data(key, resName, SE_PATH));
-                break;
-            case E_AudioType.LoopSE:
-                if (poolLoopSE.ContainsKey(key)) poolLoopSE.Remove(key);
-                poolLoopSE.Add(key, new Data(key, resName, LOOP_SE_PATH));
-                break;
-            default: Debug.Log("SetAudio.Err"); break;
-        }
-    }
-
 
     //====================
     //  SE
@@ -207,21 +200,26 @@ public class AudioMG
 
     public bool SetPlaySE(string key, int channel = -1, float pitch = 1.0f)
     {
-        //対応するキーがない
-        if (!poolSE.ContainsKey(key)) { Debug.Log("SE.keyName." + key + " == null"); return false; }
-        //リソースの取得
-        var data_ = poolSE[key];
-
         if (0 <= channel && channel < SE_CHANNEL) {
             //チャンネル指定
             var source_ = GetAudioSource(E_AudioType.SE, channel);
+            //対応するキーがない
+            if (!poolSE.ContainsKey(key)) { Debug.Log("SE.keyName." + key + " == null"); return false; }
+            //リソースの取得
+            var data_ = poolSE[key];
+
             source_.pitch = pitch;
             source_.clip = data_.Clip;
             source_.Play();
         }
         else {
-            //デフォルトで再生(PlayOneShot()で再生)
             var source_ = GetAudioSource(E_AudioType.SE);
+            //対応するキーがない
+            if (!poolSE.ContainsKey(key)) { Debug.Log("SE.keyName." + key + " == null"); return false; }
+            //リソースの取得
+            var data_ = poolSE[key];
+
+            //デフォルトで再生(PlayOneShot()で再生)
             source_.PlayOneShot(data_.Clip);
         }
         return true;
@@ -261,8 +259,11 @@ public class AudioMG
 
     bool SetPlayBGM(string key, float fadeSpeedRate = BGM_FADE_SPEED_RATE_HIGH, int channel = -1)
     {
+        var source_ = GetAudioSource(E_AudioType.BGM, channel);
+
         if (!poolBGM.ContainsKey(key)) {
             Debug.Log(key + "BGM.keyName." + key + " == null");
+            Debug.Log("poolBGM.Count : " + poolBGM.Count);
             return false;
         }
 
@@ -270,7 +271,6 @@ public class AudioMG
         var data_ = poolBGM[key];
 
         //再生
-        var source_ = GetAudioSource(E_AudioType.BGM, channel);
         //現在BGMが流れていない場合→そのまま流す
         if (!source_.isPlaying) {
             nextBGMName_ = "";
@@ -358,9 +358,17 @@ public class AudioMG
 
     //========================
     // 音量変化
-    // BGMとSEのvolumeを別々に変更＆保存 (SEは全てのチャンネルを一括変更)
-    public static void SetChangeVolume(float BGMvolume, float SEvolume) { Instance.SetBGMVolume(BGMvolume); Instance.SetSEVolume(SEvolume); }
+    /// <summary>
+    /// BGMとSEのvolumeを別々に変更＆保存 (SEは全てのチャンネルを一括変更)
+    /// </summary>
+    /// <param name="BGMvolume"></param> 変更後のBGMボリュームの値
+    /// <param name="SEvolume"></param>　変更後のSEボリュームの値
+    public static void ChangeVolume(float BGMvolume, float SEvolume) { Instance.SetBGMVolume(BGMvolume); Instance.SetSEVolume(SEvolume); }
 
+    /// <summary>
+    /// BGMのvolume変更
+    /// </summary>
+    /// <param name="BGMvolume"></param>
     public static void ChangeBGMVolume(float BGMvolume) { Instance.SetBGMVolume(BGMvolume); }
     void SetBGMVolume(float volume)
     {
@@ -370,6 +378,10 @@ public class AudioMG
         PlayerPrefs.SetFloat(BGM_VOLUME_KEY, volume);
     }
 
+    /// <summary>
+    /// SEのvolume変更
+    /// </summary>
+    /// <param name="SEvolume"></param>
     public static void ChangeSEVolume(float SEvolume) { Instance.SetSEVolume(SEvolume); }
     void SetSEVolume(float volume)
     {
