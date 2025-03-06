@@ -4,41 +4,34 @@ using UnityEngine;
 
 public class CameraControll : MonoBehaviour
 {
-    [SerializeField] private GameObject camera_obj;
-    [SerializeField] private int flag;
-    [SerializeField] private HitPoint hitPoint; 
+    private Vector3 originalPosition;
+    private float shakeDuration = 0f;
+    private float shakeMagnitude = 0.1f;
 
-    public void FlagPlus()
+    void Start()
     {
-        flag = 1;
+        originalPosition = transform.localPosition;
     }
 
     void Update()
     {
-        DamageReaction();
+        if (shakeDuration > 0)
+        {
+            transform.localPosition = originalPosition + (Vector3)(Random.insideUnitCircle * shakeMagnitude);
+            shakeDuration -= Time.deltaTime;
+        }
+        else
+        {
+            transform.localPosition = originalPosition;
+        }
     }
 
-    public void DamageReaction()
+    // ƒJƒƒ‰‚ğw’èŠÔE‹­‚³‚Å—h‚ç‚·
+    /// <param name = "duration">—h‚ê‚éŠÔ</param>
+    /// <param name = "magnitude">—h‚ê‚Ì‹­‚³</param>
+    public void Shake(float duration, float magnitude)
     {
-        switch (flag)
-        {
-            case 1:
-                goto case 3;
-            case 3:
-                camera_obj.transform.Translate(30 * Time.deltaTime, 0, 0);
-                if (camera_obj.transform.position.x >= 1.0f)
-                    flag++;
-                break;
-            case 2:
-                camera_obj.transform.Translate(-30 * Time.deltaTime, 0, 0);
-                if (camera_obj.transform.position.x <= -1.0f)
-                    flag++;
-                break;
-            case 4:
-                camera_obj.transform.Translate(-30 * Time.deltaTime, 0, 0);
-                if (camera_obj.transform.position.x <= 0)
-                    flag = 0;
-                break;
-        }
+        shakeDuration = duration;
+        shakeMagnitude = magnitude;
     }
 }

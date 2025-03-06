@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &153410184 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6626531216291083734, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
-  m_PrefabInstance: {fileID: 1125809892655866103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5bc24daeebb2148abb350ce966d9b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &725689646
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 1118563419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8724849, y: -0.885008, z: -26.739689}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,9 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debde46def80d774e83247bb584f2e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera_obj: {fileID: 1118563419}
-  flag: 0
-  hitPoint: {fileID: 153410184}
 --- !u!1 &1436404666
 GameObject:
   m_ObjectHideFlags: 0
