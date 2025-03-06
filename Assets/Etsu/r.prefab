@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7913233680770148883}
   m_Layer: 0
-  m_Name: "\u53CD\u5C04"
+  m_Name: r
   m_TagString: cursor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
