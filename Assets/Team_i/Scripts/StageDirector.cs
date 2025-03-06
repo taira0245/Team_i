@@ -22,7 +22,8 @@ public class StageDirector : MonoBehaviour
         timer_.PlayAnim();
     }
 
-    private void Awake()
+
+    private void Start()
     {
         StartInit();
     }
