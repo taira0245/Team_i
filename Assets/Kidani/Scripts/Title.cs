@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Option : MonoBehaviour
+public class Title : MonoBehaviour
 {
     [SerializeField] string next_scene_name = default!;
-    public void OptionButton()
+
+    public void TitleButton()
     {
         SceneManager.LoadScene(next_scene_name);
     }
