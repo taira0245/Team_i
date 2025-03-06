@@ -38,9 +38,12 @@ public class StageDirector : MonoBehaviour
         oldHitCnt = player_.count;
     }
 
-
+    
     private void Start()
     {
+        //カーソルの非表示
+        Cursor.visible = false;
+
         StartInit();
     }
 
@@ -114,6 +117,7 @@ public class StageDirector : MonoBehaviour
     void GameTerminate()
     {
         timer_.GameEnd();
+        Cursor.visible = true;
         SceneManager.LoadScene(nextSceneName);
     }
 }
