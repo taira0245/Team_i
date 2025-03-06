@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Animations;
 
 public class HitPoint : MonoBehaviour
 {
     [Header("HP"),SerializeField]
     private int hp, max_hp;
-    [Header("HPバー"), SerializeField]
-    private Image[] hit_points;
+    [Header("HPバーのアニメーター"), SerializeField]
+    private Animator hit_point_anim;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class HitPoint : MonoBehaviour
     {
         if (hp <= 0) return;
         hp--;
-        hit_points[hp].enabled = false;
+        hit_point_anim.SetInteger("hit_point", hp);
     }
 
     public int GetHp()

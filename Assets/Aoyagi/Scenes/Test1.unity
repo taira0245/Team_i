@@ -1140,10 +1140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   max_hp: 3
-  hit_points:
-  - {fileID: 698438732}
-  - {fileID: 637120176}
-  - {fileID: 704206787}
+  hit_point_anim: {fileID: 1857090845}
 --- !u!95 &1857090845
 Animator:
   serializedVersion: 7
@@ -1154,7 +1151,7 @@ Animator:
   m_GameObject: {fileID: 1857090842}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77431a98b0485be479c3e5fcd6988ff2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 867276539e26df94da8639f7c0dc0038, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
