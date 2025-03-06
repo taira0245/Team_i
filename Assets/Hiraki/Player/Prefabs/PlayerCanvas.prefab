@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 3719446774296457171}
   - component: {fileID: 5330047647075641114}
   m_Layer: 5
-  m_Name: PLAim
+  m_Name: HitableArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
