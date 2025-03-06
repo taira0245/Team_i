@@ -24,6 +24,7 @@ public class HitPoint : MonoBehaviour
         }
     }
 
+    //HPUIをアニメーションで変更
     public void Damage()
     {
         if (hp <= 0) return;
