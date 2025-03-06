@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerDirector : MonoBehaviour
 {
-    enum E_PLState
+    public enum E_PLState
     {
         Wait,
         Swing,
@@ -18,6 +18,8 @@ public class PlayerDirector : MonoBehaviour
     [SerializeField] Image pl_image;
     int cr_idx = 0;
     int max_indx = 0;
+    E_PLState crState = E_PLState.Wait;
+    public void StateInit() => crState = E_PLState.Wait;
 
     private void Awake()
     {
@@ -26,10 +28,11 @@ public class PlayerDirector : MonoBehaviour
         ChangePLImage((E_PLState)cr_idx);
     }
 
-    private void ChangePLImage(E_PLState type)
+    public void ChangePLImage(E_PLState type)
     {
         pl_image.sprite = pl_sprites.GetSprite((int)type);
     }
+
 
     private void Update()
     {

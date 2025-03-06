@@ -51,7 +51,7 @@ public class StageDirector : MonoBehaviour
         }
     }
 
-    [SerializeField] string next_scene_name = default!;
+    [SerializeField] string nextSceneName = default!;
 
     [Header("ƒQ[ƒ€ŠÔ‚Ìİ’è")]
     [SerializeField] float game_time = 30;
@@ -109,6 +109,6 @@ public class StageDirector : MonoBehaviour
     void GameTerminate()
     {
         timer_.GameEnd();
-        SceneManager.LoadScene(next_scene_name);
+        SceneManager.LoadScene(nextSceneName);
     }
 }
