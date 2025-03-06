@@ -16,6 +16,7 @@ public class PointerControll : MonoBehaviour
         Tracking();
     }
 
+    //É}ÉEÉXí«è]
     public void Tracking()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(

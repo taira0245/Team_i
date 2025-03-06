@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6666f828f2c7b46a72225e2b02d07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 127442093}
 --- !u!1 &531871479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857090843}
   - component: {fileID: 1857090844}
+  - component: {fileID: 1857090845}
   m_Layer: 5
   m_Name: HitPointUI
   m_TagString: Untagged
@@ -1142,6 +1144,28 @@ MonoBehaviour:
   - {fileID: 698438732}
   - {fileID: 637120176}
   - {fileID: 704206787}
+--- !u!95 &1857090845
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857090842}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77431a98b0485be479c3e5fcd6988ff2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2006040474
 GameObject:
   m_ObjectHideFlags: 0

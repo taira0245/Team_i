@@ -17,6 +17,7 @@ public class HitPoint : MonoBehaviour
 
     public void Update()
     {
+        //デバッグ用
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Damage();
