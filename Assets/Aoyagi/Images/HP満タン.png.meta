@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e2bd12161b13db44cb6ae1c1079af450
+guid: d31225d9552ddba4999d8429410e212f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4910588155397645190
-    second: "\u30A8\u30CD\u30DF\u30FC1_0"
+      213: 6450590058062506948
+    second: "HP\u6E80\u30BF\u30F3_2_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u30A8\u30CD\u30DF\u30FC1_0"
+      name: "HP\u6E80\u30BF\u30F3_2_0"
       rect:
         serializedVersion: 2
-        x: 117
-        y: 8
-        width: 790
-        height: 982
+        x: 312
+        y: 673
+        width: 2557
+        height: 903
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7c584f07161adbb0800000000000000
-      internalID: -4910588155397645190
+      spriteID: 4cb6b7a2b79158950800000000000000
+      internalID: 6450590058062506948
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u30A8\u30CD\u30DF\u30FC1_0": -4910588155397645190
+      "HP\u6E80\u30BF\u30F3_2_0": 6450590058062506948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
