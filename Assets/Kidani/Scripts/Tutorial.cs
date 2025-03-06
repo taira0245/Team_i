@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
+    [SerializeField] string next_scene_name = default!;
+
     public void TutorialButton()
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene(next_scene_name);
     }
 }

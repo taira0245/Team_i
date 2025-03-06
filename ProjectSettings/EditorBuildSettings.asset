@@ -23,5 +23,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Kidani/Scenes/TutorialScene.unity
     guid: efbaf9c088b7de34e93cc5f6629e8ab3
+  - enabled: 1
+    path: Assets/Kidani/Scenes/SelectScene.unity
+    guid: 713b4b9832db3d747a17fafb4c7b1b74
+  - enabled: 1
+    path: Assets/Kidani/Scenes/ResultScene.unity
+    guid: 1aa4e9bcc9b77804dbde85341a90dc30
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

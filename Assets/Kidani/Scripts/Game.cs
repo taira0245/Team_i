@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Start : MonoBehaviour
 {
+    [SerializeField] string next_scene_name = default!;
     public void StartButton()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(next_scene_name);
     }
 
 }

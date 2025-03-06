@@ -485,7 +485,7 @@ MonoBehaviour:
   killCounter_: {fileID: 1290778504}
   hitPoint_: {fileID: 29354864}
   player_: {fileID: 1815556963}
-  next_scene_name: SampleScene
+  nextSceneName: ResultScene
   game_time: 60
 --- !u!114 &1290778504 stripped
 MonoBehaviour:
