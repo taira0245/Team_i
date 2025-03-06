@@ -85,6 +85,11 @@ public class StageDirector : MonoBehaviour
     /// <returns> ゲームプレイ可能状態を返す</returns>
     bool GameStageExe()
     {
+
+        if (player_.hp != oldHp) { ChangeHP(); }
+        if (player_.count != oldHitCnt) { ChangeCount(); }
+        SavePLParam();
+
         //ゲームオーバー処理
         if (player_.hp <= 0) {
             gameover_Flag = true;
@@ -92,9 +97,6 @@ public class StageDirector : MonoBehaviour
             return false;
         }
 
-        if (player_.hp != oldHp) { ChangeHP(); }
-        if (player_.count != oldHitCnt) { ChangeCount(); }
-        SavePLParam();
 
         //時間経過処理
         elapsed_time += Time.deltaTime;
