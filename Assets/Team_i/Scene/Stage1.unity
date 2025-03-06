@@ -486,6 +486,7 @@ MonoBehaviour:
   hitPoint_: {fileID: 29354864}
   player_: {fileID: 1815556963}
   nextSceneName: ResultScene
+  playerDirector_: {fileID: 0}
   game_time: 60
 --- !u!114 &1290778504 stripped
 MonoBehaviour:
@@ -506,9 +507,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2784257777367494274, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3289531392912607191, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508637445098583186, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5242183113205169738, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_Sprite
@@ -612,6 +621,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8945272308130187404, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979502933615941056, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9030646557798121330, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -769,6 +786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   count: 0
+  space_cool_time: 1
+  santa: []
 --- !u!1 &1985349523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1065,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116474429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

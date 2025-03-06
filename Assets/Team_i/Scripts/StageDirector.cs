@@ -53,6 +53,9 @@ public class StageDirector : MonoBehaviour
 
     [SerializeField] string nextSceneName = default!;
 
+    [SerializeField] PlayerDirector playerDirector_;
+    PlayerDirector.E_PLState crPLState;
+
     [Header("ƒQ[ƒ€ŠÔ‚Ìİ’è")]
     [SerializeField] float game_time = 30;
     float elapsed_time = 0; //Œo‰ßŠÔ
