@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1331393317352699594}
   m_Layer: 0
   m_Name: "\u30DC\u30E0\u706B\u82B1\u5927"
-  m_TagString: Untagged
+  m_TagString: bom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,5 +121,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -1.31}
+  m_Offset: {x: 0, y: -2.13}
   m_Radius: 6.55

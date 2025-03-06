@@ -53,6 +53,9 @@ public class StageDirector : MonoBehaviour
 
     [SerializeField] string nextSceneName = default!;
 
+    [SerializeField] PlayerDirector playerDirector_;
+    PlayerDirector.E_PLState crPLState;
+
     [Header("ゲーム時間の設定")]
     [SerializeField] float game_time = 30;
     float elapsed_time = 0; //経過時間
@@ -82,6 +85,11 @@ public class StageDirector : MonoBehaviour
     /// <returns> ゲームプレイ可能状態を返す</returns>
     bool GameStageExe()
     {
+
+        if (player_.hp != oldHp) { ChangeHP(); }
+        if (player_.count != oldHitCnt) { ChangeCount(); }
+        SavePLParam();
+
         //ゲームオーバー処理
         if (player_.hp <= 0) {
             gameover_Flag = true;
@@ -89,9 +97,6 @@ public class StageDirector : MonoBehaviour
             return false;
         }
 
-        if (player_.hp != oldHp) { ChangeHP(); }
-        if (player_.count != oldHitCnt) { ChangeCount(); }
-        SavePLParam();
 
         //時間経過処理
         elapsed_time += Time.deltaTime;

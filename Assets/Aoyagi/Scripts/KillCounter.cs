@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class KillCounter : MonoBehaviour
 {
-    [SerializeField] private int kill_count;
-    [SerializeField] private Text kill_count_text;
+    [Header("倒した敵の数"), SerializeField] 
+    private int kill_count;
+    [Header("倒した敵の数を表示させるTextUI"), SerializeField]
+    private Text kill_count_text;
 
     //キルスコアのリセット
     private void Start()

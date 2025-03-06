@@ -5,7 +5,9 @@ using UnityEngine.Animations;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [Header("タイマーのアニメーター"),SerializeField] 
+    private Animator animator;
+    [Header("タイマーの一時停止トリガー")]
     private bool timer_stop;
 
     private void Start()
@@ -47,6 +49,6 @@ public class Timer : MonoBehaviour
     //ここからゲーム終了の処理を実行
     public void GameEnd()
     {
-        Debug.Log("ゲームオーバー");
+        Debug.Log("リザルト画面に移行");
     }
 }
