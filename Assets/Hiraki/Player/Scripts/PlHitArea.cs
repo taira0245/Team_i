@@ -22,6 +22,9 @@ public class PlHitArea : MonoBehaviour
     bool CheckHitable()
     {
         bool flag = false;
+
+        //‚±‚±‚É”»’èˆ—‚ğ’Ç‰Á
+
         return flag;
     }
 

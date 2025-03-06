@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StageDirector : MonoBehaviour
 {
+    [SerializeField] Timer timer_;
     int hp = 0;
     bool isGame = false;
     bool gameover_Flag = false;
@@ -18,6 +19,7 @@ public class StageDirector : MonoBehaviour
         gameover_Flag = false;
         hp = 3;
         elapsed_time = 0;
+        timer_.PlayAnim();
     }
 
     private void Awake()
@@ -67,6 +69,7 @@ public class StageDirector : MonoBehaviour
     /// </summary>
     void GameTerminate()
     {
+        timer_.GameEnd();
         SceneManager.LoadScene(next_scene_name);
     }
 }
