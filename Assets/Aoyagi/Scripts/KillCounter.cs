@@ -21,4 +21,10 @@ public class KillCounter : MonoBehaviour
         kill_count++;
         kill_count_text.text = "Kill : " + kill_count;
     }
+
+    //キルカウント取得用
+    public int GetKillCount()
+    {
+        return kill_count;
+    }
 }
