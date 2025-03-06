@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 [System.Obsolete]
 
-public class Enemy2 : MonoBehaviour
+public class Enemy_right : MonoBehaviour
 {
     Bom bomscript;
     Player countscript;
