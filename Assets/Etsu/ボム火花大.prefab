@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2104358457504411024}
   - component: {fileID: 718468741398578380}
   - component: {fileID: -1331393317352699594}
+  - component: {fileID: -5967294148639423229}
   m_Layer: 0
   m_Name: "\u30DC\u30E0\u706B\u82B1\u5927"
   m_TagString: bom
@@ -123,3 +124,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -2.13}
   m_Radius: 6.55
+--- !u!114 &-5967294148639423229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8045886604029988366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f8b7fba660d464096af11887a7b92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throw_speed: 8
+  player_speed: 24
+  change: 0
