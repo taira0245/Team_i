@@ -15,12 +15,14 @@ public class HitPoint : MonoBehaviour
         hp = max_hp;
     }
 
+    [System.Obsolete]
     public void Update()
     {
         //デバッグ用
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Damage();
+            FindObjectOfType<CameraControll>().Shake(2.0f, 0.5f);
         }
     }
 
