@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PLData
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 6528982651606479045, guid: 7b4b2c8ca2731db46960b7d889874a64, type: 3}
-  - {fileID: -4377167217137561329, guid: 7b77d581ba43d93499809d940a8ec48a, type: 3}
-  - {fileID: 8647956706006381484, guid: 562881568a65b1449a9587841dcf3da9, type: 3}
+  - {fileID: 21300000, guid: 7b4b2c8ca2731db46960b7d889874a64, type: 3}
+  - {fileID: 21300000, guid: 7b77d581ba43d93499809d940a8ec48a, type: 3}
+  - {fileID: 21300000, guid: 562881568a65b1449a9587841dcf3da9, type: 3}
   no_data_Sprite: {fileID: 0}
