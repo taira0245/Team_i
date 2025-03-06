@@ -47,6 +47,7 @@ public class Enemy_left : MonoBehaviour
             {
                 start = false;
                 Bom_spawn(); // 爆弾を投げる
+                             rotating = true; // 回転を開始
             }
             limit = true;
             Delay();
@@ -74,7 +75,7 @@ public class Enemy_left : MonoBehaviour
         if (time > 2)
         {
             isMovingRight = false; // 右移動が終わったら、回転を開始
-            rotating = true; // 回転を開始
+            
             initialXPosition = transform.position.x; // 移動終了時の位置を記録
         }
     }
