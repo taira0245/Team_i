@@ -34,6 +34,7 @@ public class ButterPoint : MonoBehaviour
         }
     }
 
+    //ノーツを徐々に小さくする
     public void NotesReduction()
     {
         scale -= notes_speed * Time.deltaTime;
@@ -44,6 +45,7 @@ public class ButterPoint : MonoBehaviour
         }
     }
 
+    //ノーツを元の位置に戻す
     public void NotesReset()
     {
         scale = max_scale;
