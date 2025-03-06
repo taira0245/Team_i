@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 53a59ab18d2b33c46ad2bb621639868d
+guid: 1d76c1fcbef05214eb77c66432bac45a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4745682023850360158
-    second: hp_7_0
+      213: -4967572461540986855
+    second: "\u30BF\u30A4\u30DE\u30FC(\u6642\u8A08)\u3000\u571F\u53F0_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hp_7_0
+      name: "\u30BF\u30A4\u30DE\u30FC(\u6642\u8A08)\u3000\u571F\u53F0_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3248
-        height: 779
+        x: 183
+        y: 28
+        width: 914
+        height: 1138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a2417fc753f32eb0800000000000000
-      internalID: -4745682023850360158
+      spriteID: 91036d16a23af0bb0800000000000000
+      internalID: -4967572461540986855
       vertices: []
       indices: 
       edges: []
