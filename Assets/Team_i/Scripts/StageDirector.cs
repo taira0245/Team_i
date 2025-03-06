@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class StageDirector : MonoBehaviour
 {
+    [Header("タイマーUIの設定")]
+    [Tooltip("Timerインスタンス参照")]
     [SerializeField] Timer timer_;
     int hp = 0;
     bool isGame = false;
