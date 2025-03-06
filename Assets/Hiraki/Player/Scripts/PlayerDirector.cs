@@ -18,8 +18,8 @@ public class PlayerDirector : MonoBehaviour
     [SerializeField] Image pl_image;
     int cr_idx = 0;
     int max_indx = 0;
-    E_PLState crState = E_PLState.Wait;
-    public void StateInit() => crState = E_PLState.Wait;
+    //E_PLState crState = E_PLState.Wait;
+    //public void StateInit() => crState = E_PLState.Wait;
 
     private void Awake()
     {
