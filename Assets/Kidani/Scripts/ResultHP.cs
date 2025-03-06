@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,8 @@ public class ResultHP : MonoBehaviour
 {
     [SerializeField] private int hp = 3;
 
- 
+
+    public Sprite zero;
     public Sprite one;
     public Sprite two;
     public Sprite three;
@@ -36,8 +38,9 @@ public class ResultHP : MonoBehaviour
                 image.sprite = one;     //HP1の画像表示
                 break;
             default:
-                image.sprite = null;    //何も表示しない
+                image.sprite = zero;    //それ以外0表示
                 break;
+                
         }
     }
 }

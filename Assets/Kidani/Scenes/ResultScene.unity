@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 641825946}
   - component: {fileID: 641825945}
   - component: {fileID: 641825944}
+  - component: {fileID: 641825947}
   m_Layer: 5
   m_Name: TitleButton
   m_TagString: Untagged
@@ -395,6 +396,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641825942}
   m_CullTransparentMesh: 1
+--- !u!114 &641825947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641825942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aaeae9d5a090954887a844a3684e448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 1.2
+  transitionSpeed: 0.2
 --- !u!1 &755820783
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,14 +461,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -528507430585463172, guid: aa6897122bcd7a34babbd70b42acc1be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -484,9 +499,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 3
-  one: {fileID: -4619705482224326364, guid: 9de23aae7ca101a4a89e79108747b7fd, type: 3}
-  two: {fileID: -4619705482224326364, guid: 9de23aae7ca101a4a89e79108747b7fd, type: 3}
-  three: {fileID: -4619705482224326364, guid: 9de23aae7ca101a4a89e79108747b7fd, type: 3}
+  zero: {fileID: -528507430585463172, guid: aa6897122bcd7a34babbd70b42acc1be, type: 3}
+  one: {fileID: -8466629868714491950, guid: 2d4824e376dd3ff44a32b852b8ee3c97, type: 3}
+  two: {fileID: 3695540991007769659, guid: 76e4b68aacbafc947922371f11bb37da, type: 3}
+  three: {fileID: 4946164732223832688, guid: 05b6bd45c21404b458de77d388c6fbdb, type: 3}
 --- !u!1 &911723808
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,18 +562,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 5
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u30BF\u30A4\u30C8\u30EB\u3078"
 --- !u!222 &911723811
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -743,6 +759,7 @@ GameObject:
   - component: {fileID: 1674892539}
   - component: {fileID: 1674892538}
   - component: {fileID: 1674892537}
+  - component: {fileID: 1674892540}
   m_Layer: 5
   m_Name: SelectButton
   m_TagString: Untagged
@@ -864,6 +881,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674892535}
   m_CullTransparentMesh: 1
+--- !u!114 &1674892540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674892535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aaeae9d5a090954887a844a3684e448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 1.2
+  transitionSpeed: 0.2
 --- !u!1 &1686409052
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,18 +954,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 5
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u96E3\u6613\u5EA6\u9078\u629E\u3078"
 --- !u!222 &1686409055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1291,6 +1322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
+  zero: {fileID: 0}
   one: {fileID: 0}
   two: {fileID: 0}
   three: {fileID: -9057573014007474763, guid: d7431eb5d766c574c98c15c4c0e2c846, type: 3}

@@ -1,92 +1,64 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class FadeController : MonoBehaviour
+public class SceneTransition : MonoBehaviour
 {
-    [SerializeField] string next_scene_name = default!;
-    public Image fadeImage;  // フェード用画像
-    public float fadeDuration = 1f;  // フェードの時間
-    private bool isTransitioning = false;
-    private static GameObject mainCanvasInstance;  // MainのCanvasのインスタンス
-    public GameObject[] mainUI;
+    public static SceneTransition instance;
+    public Image fadeImage; // フェード用の Image
+    public float fadeDuration = 1f; // フェード時間
 
-    void Awake()
+    private void Awake()
     {
-
-        // MainシーンのCanvasのみDontDestroyOnLoadにする
-        if (SceneManager.GetActiveScene().name == "Main" && mainCanvasInstance == null)
+        if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
-            mainCanvasInstance = gameObject;  // このオブジェクトを保存
+            instance = this;
+            DontDestroyOnLoad(gameObject); // シーンをまたいでオブジェクトを保持
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    void Start()
+    private void Start()
     {
-        // 最初は透明にする（Alphaを0）
-        fadeImage.color = new Color(0, 0, 0, 0);
-
+        StartCoroutine(FadeIn()); // シーン開始時にフェードイン
     }
 
-    public void StartSceneTransition(string next_scene_name)
+    public void LoadSceneWithFade(string sceneName)
     {
-        if (!isTransitioning)
+        StartCoroutine(FadeOutAndLoad(sceneName));
+    }
+
+    private IEnumerator FadeIn()
+    {
+        fadeImage.gameObject.SetActive(true);
+        float timer = fadeDuration;
+        while (timer > 0)
         {
-            StartCoroutine(SwitchScene(next_scene_name));
+            timer -= Time.deltaTime;
+            fadeImage.color = new Color(0, 0, 0, timer / fadeDuration);
+            yield return null;
         }
+        fadeImage.gameObject.SetActive(false);
     }
 
-    // フェードアウトしてシーンを切り替える
-    private IEnumerator SwitchScene(string next_scene_name)
+    private IEnumerator FadeOutAndLoad(string sceneName)
     {
-        isTransitioning = true;
-
-        // フェードイン
-        yield return StartCoroutine(Fade(1));
-
-        // シーンを切り替えとUI要素削除
-        SceneManager.LoadScene(next_scene_name);
-        foreach (GameObject uiElement in mainUI)
+        fadeImage.gameObject.SetActive(true);
+        float timer = 0;
+        while (timer < fadeDuration)
         {
-            uiElement.SetActive(false);
-        }
-
-        // シーンが切り替わるまで待つ（次のフレーム）
-        yield return null;
-
-        // フェードアウト
-        yield return StartCoroutine(Fade(0));
-
-        isTransitioning = false;
-    }
-
-    // フェード処理
-    private IEnumerator Fade(float targetAlpha)
-    {
-        float startAlpha = fadeImage.color.a;
-        float time = 0;
-
-        while (time < fadeDuration)
-        {
-            time += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration);
-            fadeImage.color = new Color(0, 0, 0, alpha);
+            timer += Time.deltaTime;
+            fadeImage.color = new Color(0, 0, 0, timer / fadeDuration);
             yield return null;
         }
 
-        fadeImage.color = new Color(0, 0, 0, targetAlpha);
-    }
-
-    public void BackMain()
-    {
-        SceneManager.LoadScene("Main");
-        Destroy(mainCanvasInstance);  // 別シーンに移動したらMain-Canvasを削除
-        mainCanvasInstance = null;
-        foreach (GameObject uiElement in mainUI)
-        {
-            uiElement.SetActive(true);
-        }
+        SceneManager.LoadScene(sceneName);
+        yield return new WaitForSeconds(0.1f); // シーンロードの待機
+        StartCoroutine(FadeIn()); // フェードイン
     }
 }
+
