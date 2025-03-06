@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     bool swing = false;
     public float space_cool_time = 1;
 
-    public List<GameObject> santa;
+    public GameObject santa1;
+    public GameObject santa2;
+    public GameObject santa3;
 
 
     void Update()
@@ -22,19 +24,11 @@ public class Player : MonoBehaviour
 
     void Swing()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !swing)
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)) && swing == false)
         {
-            Debug.Log("スペースキーが押された！クールタイム開始");
-            foreach (GameObject obj in santa)
-            {
-                if (obj != null)
-                {
-                    // 現在の状態に応じてアクティブ/非アクティブを切り替える
-                    obj.SetActive(!obj.activeSelf);
-                }
-            }
-            StartCoroutine(SpaceCooldown()); // クールタイム開始
-
+            santa1.SetActive(true);
+            santa2.SetActive(false);
+            santa3.SetActive(false);
         }
     }
 
@@ -43,14 +37,6 @@ public class Player : MonoBehaviour
     {
         Debug.Log("クールタイム中...");
         yield return new WaitForSeconds(space_cool_time); // f秒待つ
-        foreach (GameObject obj in santa)
-        {
-            if (obj != null)
-            {
-                // 現在の状態に応じてアクティブ/非アクティブを切り替える
-                obj.SetActive(!obj.activeSelf);
-            }
-        }
         StartCoroutine(SpaceCooldown()); // クールタイム開始
         swing = false; // スペースキーを再び押せるようにする
         Debug.Log("クールタイム終了！スペースキーが再び使えます");
