@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f8b7fba660d464096af11887a7b92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throw_speed: 10
-  player_speed: 30
+  throw_speed: 8
+  player_speed: 24
   change: 0
 --- !u!58 &-5238143262116098609
 CircleCollider2D:
