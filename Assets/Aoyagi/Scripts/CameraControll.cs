@@ -1,36 +1,44 @@
-using UnityEngine;
-using Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class CameraControll : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
-    [SerializeField] private CinemachineBasicMultiChannelPerlin noise;
-    [SerializeField] private Coroutine shakeCoroutine;
+    [SerializeField] private GameObject camera_obj;
+    [SerializeField] private int flag;
+    [SerializeField] private HitPoint hitPoint; 
 
-    private void Awake()
+    public void FlagPlus()
     {
-        if (virtualCamera != null)
-        {
-            noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        }
+        flag = 1;
     }
 
-    public void Shake(float intensity, float duration)
+    void Update()
     {
-        if (noise == null) return;
-
-        if (shakeCoroutine != null)
-        {
-            StopCoroutine(shakeCoroutine);
-        }
-        shakeCoroutine = StartCoroutine(ShakeCoroutine(intensity, duration));
+        DamageReaction();
     }
 
-    private IEnumerator ShakeCoroutine(float intensity, float duration)
+    public void DamageReaction()
     {
-        noise.m_AmplitudeGain = intensity;
-        yield return new WaitForSeconds(duration);
-        noise.m_AmplitudeGain = 0f;
+        switch (flag)
+        {
+            case 1:
+                goto case 3;
+            case 3:
+                camera_obj.transform.Translate(30 * Time.deltaTime, 0, 0);
+                if (camera_obj.transform.position.x >= 1.0f)
+                    flag++;
+                break;
+            case 2:
+                camera_obj.transform.Translate(-30 * Time.deltaTime, 0, 0);
+                if (camera_obj.transform.position.x <= -1.0f)
+                    flag++;
+                break;
+            case 4:
+                camera_obj.transform.Translate(-30 * Time.deltaTime, 0, 0);
+                if (camera_obj.transform.position.x <= 0)
+                    flag = 0;
+                break;
+        }
     }
 }

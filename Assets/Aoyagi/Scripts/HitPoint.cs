@@ -22,7 +22,8 @@ public class HitPoint : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Damage();
-            FindObjectOfType<CameraControll>().Shake(2.0f, 0.5f);
+          
+            
         }
     }
 
@@ -31,6 +32,8 @@ public class HitPoint : MonoBehaviour
     {
         if (hp <= 0) return;
         hp--;
+        CameraControll cameraControll = Camera.main.GetComponent<CameraControll>();
+        cameraControll.FlagPlus();
         hit_point_anim.SetInteger("hit_point", hp);
     }
 
