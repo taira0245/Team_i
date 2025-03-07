@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Kidani/Scenes/TitleScene.unity
+    guid: 5217194e9a64fd94db9db2293609e1e4
+  - enabled: 1
     path: Assets/Team_i/Scene/Stage1.unity
     guid: 6a9dc5cb69d5771478d954aca0e2b2d1
   - enabled: 1
@@ -14,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Team_i/Scene/Stage3.unity
     guid: 4cc8fd201a947f1429b99fbfb2d7700f
-  - enabled: 1
-    path: Assets/Kidani/Scenes/TitleScene.unity
-    guid: 5217194e9a64fd94db9db2293609e1e4
   - enabled: 0
     path: Assets/Kidani/Scenes/GameScene.unity
     guid: 8a73906b2d75e0946bc5dc8220ffe98a
