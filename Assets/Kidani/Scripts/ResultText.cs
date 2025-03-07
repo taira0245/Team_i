@@ -21,7 +21,7 @@ public class ResultText : MonoBehaviour
         void Update()
         {
 
-        if (hitpoint.GetHp() <= 0)    //‚à‚µŽ¸”s‚µ‚Ä‚¢‚½‚çŽ¸”s‰æ‘œ‚É•Ï‚¦‚é
+        if (ScoreMG.GetHoldHP() <= 0)    //‚à‚µŽ¸”s‚µ‚Ä‚¢‚½‚çŽ¸”s‰æ‘œ‚É•Ï‚¦‚é
             {
                 // ‰æ‘œ‚ðØ‚è‘Ö‚¦‚Ü‚·
                 image.sprite = newSprite;

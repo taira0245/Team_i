@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class ResultHP : MonoBehaviour
 {
-    public HitPoint hitpoint; // インスペクターでアタッチ
-
-
     public Sprite zero;
     public Sprite one;
     public Sprite two;
@@ -26,7 +23,8 @@ public class ResultHP : MonoBehaviour
 
     void Update()
     {
-        switch (hitpoint.GetHp())
+        //switch (hitpoint.GetHp())
+        switch (ScoreMG.GetHoldHP())
         {
             case 3:
                 image.sprite = three;   //HP3の画像表示
