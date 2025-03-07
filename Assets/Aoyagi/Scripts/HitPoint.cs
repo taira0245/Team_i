@@ -33,7 +33,7 @@ public class HitPoint : MonoBehaviour
         if (hp <= 0) return;
         hp--;
         CameraControll cameraControll = Camera.main.GetComponent<CameraControll>();
-        cameraControll.FlagPlus();
+        cameraControll.Shake(0.3f);
         hit_point_anim.SetInteger("hit_point", hp);
     }
 
