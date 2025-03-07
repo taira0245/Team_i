@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ResultHP : MonoBehaviour
 {
-    [SerializeField] private int hp = 3;
+    public HitPoint hitpoint; // インスペクターでアタッチ
 
 
     public Sprite zero;
@@ -26,7 +26,7 @@ public class ResultHP : MonoBehaviour
 
     void Update()
     {
-        switch (hp)
+        switch (hitpoint.GetHp())
         {
             case 3:
                 image.sprite = three;   //HP3の画像表示

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ResultText : MonoBehaviour
 {
-    [SerializeField] private int hp = 3;
+    public HitPoint hitpoint; // インスペクターでアタッチ
 
     public Sprite newSprite;
-        private Image image;
+    private Image image;
 
 
     void Start()
@@ -21,7 +21,7 @@ public class ResultText : MonoBehaviour
         void Update()
         {
 
-        if (hp <= 0)    //もし失敗していたら失敗画像に変える
+        if (hitpoint.GetHp() <= 0)    //もし失敗していたら失敗画像に変える
             {
                 // 画像を切り替えます
                 image.sprite = newSprite;
