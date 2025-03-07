@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public GameObject santa2;
     public GameObject santa3;
 
-    [Header("背景")]
+    [Header("背景")]//背景
     [Tooltip("最後まで残ります")]
     [SerializeField] public GameObject purezent1;
     [Tooltip("体力2まで表示します")]
