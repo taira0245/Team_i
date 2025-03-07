@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c133b9f78a3602148b236879f578469f
+guid: 5bfcf2e42dfd38a49b808a069b47404f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6166013175443384429
-    second: "HP\u6E80\u30BF\u30F3 1_0"
+      213: -8123741396986184857
+    second: playball_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "HP\u6E80\u30BF\u30F3 1_0"
+      name: playball_2_0
       rect:
         serializedVersion: 2
-        x: 346
-        y: 743
-        width: 2817
-        height: 993
+        x: 117
+        y: 821
+        width: 3185
+        height: 893
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d686eaa6054129550800000000000000
-      internalID: 6166013175443384429
+      spriteID: 76bb089ad3ca24f80800000000000000
+      internalID: -8123741396986184857
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      "HP\u6E80\u30BF\u30F3 1_0": 6166013175443384429
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

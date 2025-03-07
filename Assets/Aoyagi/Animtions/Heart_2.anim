@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 6166013175443384429, guid: c133b9f78a3602148b236879f578469f, type: 3}
+      value: {fileID: 6984898500844471138, guid: dfb79b064e4354d4cb5f8652b29924f6, type: 3}
     - time: 0.16666667
-      value: {fileID: -3349774057482944390, guid: ddd2f3435100e334c91e352d20c480b8, type: 3}
+      value: {fileID: 2341161203058022, guid: bc53312a1db910540a17f10fc44872b2, type: 3}
     attribute: m_Sprite
     path: Heart_1
     classID: 114
@@ -32,9 +32,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 3543209080989709032, guid: 0f75ef8137f0a224882deac215d23a2a, type: 3}
+      value: {fileID: 3543209080989709032, guid: 8379c712911bfcf49b965d7fb4ddc4f6, type: 3}
     - time: 0.16666667
-      value: {fileID: -7910253252694242208, guid: afca914701e9f0449a90121b20136a0e, type: 3}
+      value: {fileID: -7910253252694242208, guid: 02d5a95e96bf5f1489e14c9bcd6e06d5, type: 3}
     attribute: m_Sprite
     path: GiftBoxUI
     classID: 114
@@ -66,10 +66,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 6166013175443384429, guid: c133b9f78a3602148b236879f578469f, type: 3}
-    - {fileID: -3349774057482944390, guid: ddd2f3435100e334c91e352d20c480b8, type: 3}
-    - {fileID: 3543209080989709032, guid: 0f75ef8137f0a224882deac215d23a2a, type: 3}
-    - {fileID: -7910253252694242208, guid: afca914701e9f0449a90121b20136a0e, type: 3}
+    - {fileID: 6984898500844471138, guid: dfb79b064e4354d4cb5f8652b29924f6, type: 3}
+    - {fileID: 2341161203058022, guid: bc53312a1db910540a17f10fc44872b2, type: 3}
+    - {fileID: 3543209080989709032, guid: 8379c712911bfcf49b965d7fb4ddc4f6, type: 3}
+    - {fileID: -7910253252694242208, guid: 02d5a95e96bf5f1489e14c9bcd6e06d5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
