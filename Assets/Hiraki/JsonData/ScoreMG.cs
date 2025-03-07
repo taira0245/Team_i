@@ -10,18 +10,12 @@ public class ScoreMG
     // インスタンス関係
     //========================
     static ScoreMG instance_ = null;
-    /// <summary>
-    /// インスタンス取得
-    /// </summary>
     public static ScoreMG Instance
     {
         //Instanceが使用された際、instance_==nullの場合はインスタンスを生成
         get { instance_ ??= new ScoreMG(); return instance_; }
     }
     static GameObject object_ = null;
-    /// <summary>
-    /// オブジェクトの作成
-    /// </summary>
     void CreateObject()
     {
         object_ = new GameObject("SocreMG");

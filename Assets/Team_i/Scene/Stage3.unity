@@ -1167,7 +1167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29245153df7087e45b65431b1ac9a139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveType: 0
   plDirector_: {fileID: 1668691368}
   enemyDirector_: {fileID: 709181964}
   timer_: {fileID: 431926976}
@@ -1178,7 +1177,7 @@ MonoBehaviour:
   fadeTime_: 0
   startDelay: 2.5
   CountInterval: 0.8
-  game_time: 10
+  game_time: 60
 --- !u!4 &1924427394
 Transform:
   m_ObjectHideFlags: 0
