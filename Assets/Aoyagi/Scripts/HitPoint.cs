@@ -15,6 +15,14 @@ public class HitPoint : MonoBehaviour
         hp = max_hp;
     }
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Damage();
+        }
+    }
+
     //HPUIをアニメーションで変更
     public void Damage()
     {
