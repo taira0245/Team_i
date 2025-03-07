@@ -2,24 +2,35 @@ using System.Collections;
 using UnityEngine;
 [System.Obsolete]
 
-public class Enemy_right : MonoBehaviour
+public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
 {
+    [Header("ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°ƒXƒNƒŠƒvƒgu‰Ev")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+    [Tooltip("ƒƒ‚‚Æ‚µ‚Ä‚¨g‚¢‚­‚¾‚³‚¢")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+    [SerializeField] string MEMO;
+
     Bom bomscript;
     Player countscript;
 
     bool start = true; // HP
+    [Tooltip("”š’e")]
     [SerializeField] GameObject bom; // ”š’e–{‘Ì
+    [Header("‰’i‚Ì’x‰„‰½•b‚©")]
     [SerializeField] float start_delay; //Å‰‚Ì’x‰„
-    [SerializeField] float delay; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+    [Header("”š’e‚©‚çŸ‚Ì”š’e‚Ü‚ÅŠJ‚¯‚éŠÔ")]
+    [SerializeField] float delay = 3; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
 
     float time; // 1•bŒo‰ß‚²‚Æ‚É1‘‚¦‚é
     float speed = 2; // ˆÚ“®ƒXƒs[ƒh
     bool limit = false; //ˆÚ“®I‚í‚ê‚Îtrue
 
-    // ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
-    float rotationSpeed = 1.5f; // ‰ñ“]‘¬“x
-    float width = 5.0f; // ‰ñ“]‚Ì• (x²)
-    float height = 1.5f; // ‰ñ“]‚Ì‚‚³ (y²)
+    [Header("‰ñ“]ŠÖ˜A")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+
+    [Tooltip("‰ñ“]‘¬“x")]
+    [SerializeField] float rotationSpeed = 1.5f; // ‰ñ“]‘¬“x
+    [Tooltip("‰ñ“]‚Ì• (x²)")]
+    [SerializeField] float width = 5.0f; // ‰ñ“]‚Ì• (x²)
+    [Tooltip("‰ñ“]‚Ì• (y²)")]
+    [SerializeField] float height = 1.5f; // ‰ñ“]‚Ì‚‚³ (y²)
     Vector3 center; // ‰ñ“]‚Ì’†S
 
     bool rotating = false; // ‰ñ“]‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
@@ -31,7 +42,7 @@ public class Enemy_right : MonoBehaviour
     {
         countscript = GameObject.FindObjectOfType<Player>();
         bomscript = GetComponent<Bom>(); // ƒXƒ^[ƒg‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
-        center = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(0.0f, 5.0f), 0); // ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚É‰ñ“]‚Ì’†S‚ğİ’è
+        center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚É‰ñ“]‚Ì’†S‚ğİ’è
     }
 
 
@@ -45,7 +56,7 @@ public class Enemy_right : MonoBehaviour
         {
             if (start)
             {
-                start = false;
+                rotating = true; // ‰ñ“]‚ğŠJn
                 Bom_spawn(); // ”š’e‚ğ“Š‚°‚é
             }
             limit = true;
@@ -86,7 +97,11 @@ public class Enemy_right : MonoBehaviour
 
     IEnumerator Bom_spawn()
     {
-        yield return new WaitForSeconds(start_delay);
+        if (start)
+        {
+            start = false;
+            yield return new WaitForSeconds(start_delay);
+        }
         Instantiate(bom, transform.position, transform.rotation); // ”š’e‚ğ“Š‚°‚é
         yield return new WaitForSeconds(delay); // Ÿ‚É“Š‚°‚é‚Ü‚Å‚Ì’x‰„
         limit = false;
