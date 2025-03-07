@@ -95,13 +95,18 @@ public class Enemy_right : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
+        Debug.Log("<color=yellow> 衝突呼ばれた！");
 
         Bom bomObj = other.GetComponent<Bom>();
-        if (bomObj != null && bomObj.change)
-        {
-            Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
-            Destroy(gameObject); // 衝突した場合にEnemyを破壊
-            countscript.count++;
+        if (countscript != null) {
+            if (bomObj != null && bomObj.change) {
+                Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
+                Destroy(gameObject); // 衝突した場合にEnemyを破壊
+                countscript.count++;
+            }
+        }
+        else {
+            Debug.Log("countscript == null：Enemy_right.cs");
         }
     }
 

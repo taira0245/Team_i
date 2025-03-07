@@ -22,16 +22,16 @@ public class ScreenFade : MonoBehaviour
     private void OnGUI()
     {
         if (isFading_) {
+        Debug.Log("<color=orange>呼ばれた！！");
             //Colorの更新
             fadeColor_.a = fadeAlpha_;
             fadePanel_.color = fadeColor_;
             if (maskPanel_ != null) {
                 maskPanel_.color = fadeColor_;
             }
-            
+
         }
     }
-
 
     /// <summary>
     /// フェードしながら、現シーン破棄と次シーンの読込を行う。
@@ -54,12 +54,12 @@ public class ScreenFade : MonoBehaviour
         while (true) {
             yield return null;
 
-            float alpha = Time.deltaTime / fadeSpeed;
+            float alpha = Time.unscaledDeltaTime / fadeSpeed;
             fadeAlpha_ = Mathf.Min(fadeAlpha_ + alpha, 1.0f);
             if (fadeAlpha_ >= 1.0f) { break; }
 
             //フェード中にSEが入る場合の処理
-            if (SEKey != null && fadeAlpha_ > 0.5f) { AudioMG.PlaySE(SEKey); SEKey = null; }
+            //if (SEKey != null && fadeAlpha_ > 0.5f) { AudioMG.PlaySE(SEKey); SEKey = null; }
         }
 
         isFading_ = false;
@@ -89,7 +89,7 @@ public class ScreenFade : MonoBehaviour
             while (true) {
                 yield return null;
 
-                float alpha = Time.deltaTime / fadeSpeed;
+                float alpha = Time.unscaledDeltaTime / fadeSpeed;
                 fadeAlpha_ = Mathf.Max(fadeAlpha_ - alpha, 0.0f);
 
                 if (fadeAlpha_ <= 0.0f) { break; }

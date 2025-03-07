@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class StageDirector : MonoBehaviour
 {
     [Header("ステージ情報")]
     [SerializeField] ScoreMG.E_ScoreType saveType = ScoreMG.E_ScoreType.Stage1;
+    [SerializeField] PlayerDirector plDirector_;
+    [SerializeField] EnemyDirector enemyDirector_;
 
     [Header("UIの設定")]
     [Tooltip("Timerインスタンス参照")]
@@ -16,7 +19,6 @@ public class StageDirector : MonoBehaviour
     [SerializeField] KillCounter killCounter_;
     [SerializeField] HitPoint hitPoint_;
 
-    [SerializeField] PlayerDirector plDirector_;
 
     [Header("遷移先シーンの設定")]
     [SerializeField] string nextSceneName = default!;
@@ -25,12 +27,16 @@ public class StageDirector : MonoBehaviour
 
 
     [Header("ゲーム時間の設定")]
+    [Tooltip("プレイ開始の遅滞時間")]
+    [SerializeField] float startDelay = 2.5f;
+    [SerializeField] float CountInterval = 0.8f;
     [SerializeField] float game_time = 30;
     float elapsed_time = 0; //経過時間
 
 
     bool isGame = false;
     bool gameover_Flag = false;
+    bool isPause = false;
 
 
     //  Debug
@@ -50,9 +56,12 @@ public class StageDirector : MonoBehaviour
     private void OnGUI()
     {
         float x = 20.0f;
-        float y = 20.0f;
+        float y = 10.0f;
+        float line_y = 20.0f;
         GUI.Label(new Rect(x, y, 150, 50), "シーン名 : " + crSceneName, debugFontStyle_);
-        GUI.Label(new Rect(x, y += y, 150, 50), "経過時間 : " + elapsed_time, debugFontStyle_);
+        GUI.Label(new Rect(x, y += line_y, 150, 50), "経過時間 : " + elapsed_time, debugFontStyle_);
+        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsGame : " + isGame, debugFontStyle_);
+        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsPause : " + isPause, debugFontStyle_);
     }
 #endif
 
@@ -63,23 +72,36 @@ public class StageDirector : MonoBehaviour
 
         //カーソルの非表示
         Cursor.visible = false;
+
         plDirector_.SceneInit();
+        GameActSwitch(false);
         StartCoroutine(StageFlow());
     }
 
+    WaitForSecondsRealtime delayTime;
     IEnumerator StageFlow()
     {
-        isGame = true;
+        //シーンフェード終了待ち
+        while (ScreenFade.isFading_) {
+            yield return null;
+        }
+
+        delayTime = new(startDelay);
         gameover_Flag = false;
         elapsed_time = 0;
-        isGame = true;
+        yield return delayTime;
 
-        //タイマーUIのセット
-        timer_.PlayAnim();
+
+        isGame = true;
+        GameActSwitch(true);
 
         while (isGame) {
             yield return null;
 
+            if (Input.GetKeyDown(KeyCode.P)) {
+                isPause = !isPause;
+                GameActSwitch(!isPause);
+            }
 
             //メイン処理
             isGame = GameStageExe();
@@ -87,17 +109,6 @@ public class StageDirector : MonoBehaviour
 
         //シーン遷移
         fade_.SetSceneChange(nextSceneName, fadeTime_);
-        SceneManager.LoadScene(nextSceneName);
-    }
-    void ChangeHP()
-    {
-        Debug.Log("ダメージ処理(UI)!");
-        hitPoint_.Damage();
-    }
-
-    void ChangeCount()
-    {
-        killCounter_.KillCountPlus();
     }
 
     /// <summary>
@@ -132,6 +143,7 @@ public class StageDirector : MonoBehaviour
     void GameTerminate()
     {
         timer_.GameEnd();
+        GameActSwitch(false);
 
         //記録を更新
         ScoreMG.SaveScoreData(plDirector_.CurrentCount, plDirector_.CurrentHP, saveType);
@@ -139,11 +151,29 @@ public class StageDirector : MonoBehaviour
         Cursor.visible = true;
     }
 
+    List<Enemy_left> enemy_F = new();
+    List<Enemy_right> enemy_R = new();
+    List<Bom> boms = new();
     /// <summary>
     /// ゲーム動作の停止制御
     /// </summary>
     void GameActSwitch(bool enableFlag)
     {
+        if (!enableFlag) {
+            Time.timeScale = 0;
+            //タイマー停止
+            timer_.StopAnim();
+
+        }
+        else{
+            enemy_F.Clear();
+            enemy_R.Clear();
+            boms.Clear();
+
+            //タイマー再会
+            timer_.PlayAnim();
+            Time.timeScale = 1;
+        }
         plDirector_.StopMotion(enableFlag);
     }
 }
