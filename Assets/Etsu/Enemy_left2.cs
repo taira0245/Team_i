@@ -54,14 +54,11 @@ public class Enemy_left2 : MonoBehaviour//投げてから移動
 
     void Update()
     {
-        if (isMovingRight)
-        {
+        if (isMovingRight) {
             Slide(); // 最初の右移動
         }
-        else if (!limit)
-        {
-            if (start)
-            {
+        else if (!limit) {
+            if (start) {
 
                 start = false;
                 StartCoroutine(Bom_spawnStart()); // 爆弾を投げる
@@ -73,14 +70,12 @@ public class Enemy_left2 : MonoBehaviour//投げてから移動
         }
 
         // 回転開始後に回転処理を実行
-        if (rotating)
-        {
+        if (rotating) {
             RotateAround();
         }
 
         // 衝突判定
-        if (bomscript != null && bomscript.change)
-        {
+        if (bomscript != null && bomscript.change) {
             Destroy(gameObject); // Enemyを破壊
         }
     }
@@ -91,8 +86,7 @@ public class Enemy_left2 : MonoBehaviour//投げてから移動
         time += Time.deltaTime;
 
         // 一定時間後に移動が完了し、回転を開始
-        if (time > 2)
-        {
+        if (time > 2) {
             isMovingRight = false; // 右移動が終わったら、回転を開始
 
             initialXPosition = transform.position.x; // 移動終了時の位置を記録
@@ -127,14 +121,15 @@ public class Enemy_left2 : MonoBehaviour//投げてから移動
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
+        if (countscript != null) {
+            Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
 
-        Bom bomObj = other.GetComponent<Bom>();
-        if (bomObj != null && bomObj.change)
-        {
-            Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
-            Destroy(gameObject); // 衝突した場合にEnemyを破壊
-            countscript.count++;
+            Bom bomObj = other.GetComponent<Bom>();
+            if (bomObj != null && bomObj.change) {
+                Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
+                Destroy(gameObject); // 衝突した場合にEnemyを破壊
+                countscript.count++;
+            }
         }
     }
 

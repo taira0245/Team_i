@@ -162,13 +162,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393463653408157104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69eee8ac9bd43c34a8ef3b26d9315e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MEMO: 
-  bom: {fileID: 0}
+  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
   start_delay: 0
   delay: 3
   rotationSpeed: 1.5
@@ -181,13 +181,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393463653408157104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da96f17855f42e4da6b3023c45b2856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MEMO: 
-  bom: {fileID: 0}
+  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
   start_delay: 0
   delay: 3
   rotationSpeed: 1.5
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MEMO: 
-  bom: {fileID: 0}
+  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
   start_delay: 0
   delay: 3
   rotationSpeed: 1.5
@@ -220,13 +220,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393463653408157104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9665995c12b644a449804d31af3d9ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MEMO: 
-  bom: {fileID: 0}
+  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
   start_delay: 0
   delay: 3
   rotationSpeed: 1.5

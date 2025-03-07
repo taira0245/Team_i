@@ -151,8 +151,6 @@ public class StageDirector : MonoBehaviour
         Cursor.visible = true;
     }
 
-    List<Enemy_left> enemy_F = new();
-    List<Enemy_right> enemy_R = new();
     List<Bom> boms = new();
     /// <summary>
     /// ゲーム動作の停止制御
@@ -166,8 +164,8 @@ public class StageDirector : MonoBehaviour
 
         }
         else{
-            enemy_F.Clear();
-            enemy_R.Clear();
+            //enemy_F.Clear();
+            //enemy_R.Clear();
             boms.Clear();
 
             //タイマー再会
