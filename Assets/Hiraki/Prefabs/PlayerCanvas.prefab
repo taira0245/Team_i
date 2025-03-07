@@ -162,8 +162,8 @@ GameObject:
   - component: {fileID: 7220312677096412886}
   - component: {fileID: 4028815548160179700}
   - component: {fileID: 4954704039468857658}
-  - component: {fileID: 6725288335707887311}
   - component: {fileID: 4487163840222348720}
+  - component: {fileID: 6725288335707887311}
   m_Layer: 5
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -257,6 +257,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4487163840222348720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241079743481554975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6cdc97dc39f044988858d84c145b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_: {fileID: 6725288335707887311}
 --- !u!114 &6725288335707887311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,23 +285,9 @@ MonoBehaviour:
   hp: 3
   count: 0
   space_cool_time: 1
-  santa1: {fileID: 0}
-  santa2: {fileID: 0}
-  santa3: {fileID: 0}
---- !u!114 &4487163840222348720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241079743481554975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c6cdc97dc39f044988858d84c145b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pl_sprites: {fileID: 11400000, guid: cb291dbc4f716ea41bd3f594a81624c0, type: 2}
-  pl_image: {fileID: 2191246534069351628}
+  santa1: {fileID: 5384620267047622336}
+  santa2: {fileID: 7817964557751392822}
+  santa3: {fileID: 7025548048365671612}
 --- !u!1 &7598170456938197552
 GameObject:
   m_ObjectHideFlags: 0
