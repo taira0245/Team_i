@@ -80,7 +80,7 @@ public class ScreenFade : MonoBehaviour
         isFading_ = true;
         if (!fadeOutOnly_) {
             //シーン遷移処理
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
             SceneManager.LoadScene(nextScene);
 
 
@@ -95,7 +95,7 @@ public class ScreenFade : MonoBehaviour
 
             }
 
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         fadeOutOnly_ = false;

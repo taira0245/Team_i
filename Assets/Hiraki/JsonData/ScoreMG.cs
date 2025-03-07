@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using JsonFileData;
 
 /// <summary>
 /// スコアデータ管理用クラス (シングルトン)
@@ -59,8 +57,7 @@ public class ScoreMG
 
         //Jsonファイル読込
         for (int i = 0; i < (int)E_ScoreType.Max; i++) {
-            scoreDatas_[i] = JsonDataMG<JsonScoreData>.Load(
-                SCORE_TYPE1_FILENAME[i],JsonDataMG<JsonScoreData>.E_FileType.ScoreData);
+            scoreDatas_[i] = JsonDataMG<JsonScoreData>.Load(SCORE_TYPE1_FILENAME[i]);
         }
     }
 
@@ -100,7 +97,7 @@ public class ScoreMG
     /// </summary>
     /// <param name="saveScore"></param> 書き込むスコアの値
     /// <param name="type"></param>　書込み先のファイル指定
-    public static void SaveScoreData(int saveScore,int holdHP,E_ScoreType type = E_ScoreType.Stage1)
+    public static void SaveScoreData(int saveScore, int holdHP, E_ScoreType type = E_ScoreType.Stage1)
     {
         Instance.scoreDatas_[(int)type].ScoreDataUpdate(saveScore);
         JsonDataMG<JsonScoreData>.Save(SCORE_TYPE1_FILENAME[(int)type], Instance.scoreDatas_[(int)type]);
