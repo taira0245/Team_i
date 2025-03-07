@@ -59,6 +59,8 @@ public static class JsonDataMG<T>
         JsonScoreData PLdata = new();
         Debug.Log("PLData : " + PLdata);
         Debug.Log("PLData.Score : " + PLdata.LatestScore);
+
+        //ファイルへの書込み
         string json = JsonUtility.ToJson(PLdata);                 // jsonとして変換
         StreamWriter wr = new(filepath, false);    // ファイル上書き指定
         wr.WriteLine(json);                                     // json変換した情報を書き込み
