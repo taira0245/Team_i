@@ -38,7 +38,7 @@ public class Bom : MonoBehaviour
             bomb_reflex(); // マウスの位置へ移動
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && strike_bool && space_cool_time) // スペースキーのクールタイム判定
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && strike_bool && space_cool_time) // スペースキーのクールタイム判定
         {
             
 
@@ -50,10 +50,9 @@ public class Bom : MonoBehaviour
            Destroy(gameObject, 4f); // 4秒後にオブジェクトを削除
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && space_cool_time)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && space_cool_time)
         {
                 Debug.Log("スペースキーが押された！クールタイム開始");
-                space_cool_time = false; // すぐに無効化
                 StartCoroutine(SpaceCooldown()); // クールタイム開始
         
         }
@@ -108,8 +107,9 @@ public class Bom : MonoBehaviour
 
     IEnumerator SpaceCooldown() // スペースキーのクールタイム
     {
+        space_cool_time = false; // すぐに無効化
         Debug.Log("クールタイム中...");
-        yield return new WaitForSeconds(1f); // f秒待つ
+        yield return new WaitForSeconds(hpscript.space_cool_time + 0.1f); // f秒待つ
         space_cool_time = true; // スペースキーを再び押せるようにする
         Debug.Log("クールタイム終了！スペースキーが再び使えます");
     }
