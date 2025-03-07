@@ -109,7 +109,7 @@ public class Bom : MonoBehaviour
     {
         space_cool_time = false; // すぐに無効化
         Debug.Log("クールタイム中...");
-        yield return new WaitForSeconds(hpscript.space_cool_time); // f秒待つ
+        yield return new WaitForSeconds(hpscript.space_cool_time + 0.1f); // f秒待つ
         space_cool_time = true; // スペースキーを再び押せるようにする
         Debug.Log("クールタイム終了！スペースキーが再び使えます");
     }
