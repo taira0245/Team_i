@@ -284,6 +284,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6666f828f2c7b46a72225e2b02d07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &151929516 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2141389060867914483, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+  m_PrefabInstance: {fileID: 151929512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &151929517 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6967331141316850117, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+  m_PrefabInstance: {fileID: 151929512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &151929518 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5185908781107999296, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+  m_PrefabInstance: {fileID: 151929512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &492577053
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +544,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!224 &768625720 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3351580488051166086, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
+  m_PrefabInstance: {fileID: 1815556961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &890508457
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,12 +624,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29245153df7087e45b65431b1ac9a139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveType: 0
   timer_: {fileID: 151929515}
   killCounter_: {fileID: 151929514}
   hitPoint_: {fileID: 151929513}
   player_: {fileID: 1815556966}
   nextSceneName: ResultScene
-  playerDirector_: {fileID: 1815556965}
   game_time: 60
 --- !u!1 &1601322600 stripped
 GameObject:
@@ -725,6 +745,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
+--- !u!224 &1815556962 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5655826736937421487, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
+  m_PrefabInstance: {fileID: 1815556961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1815556963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5384620267047622336, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
@@ -735,17 +760,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7817964557751392822, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
   m_PrefabInstance: {fileID: 1815556961}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1815556965 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4487163840222348720, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
-  m_PrefabInstance: {fileID: 1815556961}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c6cdc97dc39f044988858d84c145b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1815556966 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6725288335707887311, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
@@ -757,6 +771,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1b308623c0bdc4bb6179310f27752a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1815556967 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7327857872057347636, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
+  m_PrefabInstance: {fileID: 1815556961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1815556971 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1862080749532870108, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
+  m_PrefabInstance: {fileID: 1815556961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1985349523
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,9 +972,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debde46def80d774e83247bb584f2e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera_obj: {fileID: 2058468191}
-  flag: 0
-  hitPoint: {fileID: 151929513}
+  shake_objs:
+  - {fileID: 151929518}
+  - {fileID: 151929517}
+  - {fileID: 151929516}
+  - {fileID: 1815556962}
+  - {fileID: 1815556971}
+  - {fileID: 1815556967}
+  - {fileID: 768625720}
+  original_positions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  ui_shakeMagnitude: 100
+  camera_shakeMagnitude: 0.5
 --- !u!1 &2116474429
 GameObject:
   m_ObjectHideFlags: 0
