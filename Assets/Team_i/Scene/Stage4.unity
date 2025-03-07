@@ -692,7 +692,7 @@ MonoBehaviour:
   fadeTime_: 0
   startDelay: 2.5
   CountInterval: 0.8
-  game_time: 60
+  game_time: 30
 --- !u!4 &1395291864
 Transform:
   m_ObjectHideFlags: 0

@@ -459,6 +459,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8979664570525214070, guid: 07cd525c347f3cc449ed1421cf7a6773, type: 3}
   m_PrefabInstance: {fileID: 470048422}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &476896174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9173146018185314116, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+  m_PrefabInstance: {fileID: 324008888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aaec8a4a2d05764eab77f48b35eb773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &764537418
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +582,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f59997a0bc21b344935a0d39dc3efa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1104124468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5899633492995880936, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+  m_PrefabInstance: {fileID: 324008888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bebab4e0d8aaf4690304353e67fec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1304733852
@@ -1103,10 +1125,13 @@ MonoBehaviour:
   timer_: {fileID: 324008894}
   killCounter_: {fileID: 324008892}
   hitPoint_: {fileID: 324008890}
+  startAnim_: {fileID: 1104124468}
+  endAnim_: {fileID: 476896174}
   nextSceneName: ResultScene
   fade_: {fileID: 1352303527}
   fadeTime_: 0
-  startDelay: 2.5
+  startDelay: 4.5
+  endDelay: 2.5
   CountInterval: 0.8
   game_time: 60
 --- !u!4 &1917539016
