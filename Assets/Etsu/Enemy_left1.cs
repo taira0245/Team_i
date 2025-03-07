@@ -108,14 +108,15 @@ public class Enemy_left1 : MonoBehaviour//移動してから投げ
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
+        if (countscript != null) {
+            Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
 
-        Bom bomObj = other.GetComponent<Bom>();
-        if (bomObj != null && bomObj.change)
-        {
-            Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
-            Destroy(gameObject); // 衝突した場合にEnemyを破壊
-            countscript.count++;
+            Bom bomObj = other.GetComponent<Bom>();
+            if (bomObj != null && bomObj.change) {
+                Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
+                Destroy(gameObject); // 衝突した場合にEnemyを破壊
+                countscript.count++;
+            }
         }
     }
 

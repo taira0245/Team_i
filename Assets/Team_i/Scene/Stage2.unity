@@ -156,10 +156,10 @@ MonoBehaviour:
   hitPoint_: {fileID: 1872353034}
   nextSceneName: Stage3
   fade_: {fileID: 808895139}
-  fadeTime_: 0
+  fadeTime_: 2.55
   startDelay: 2.5
   CountInterval: 0.8
-  game_time: 10
+  game_time: 3
 --- !u!4 &86403857
 Transform:
   m_ObjectHideFlags: 0
