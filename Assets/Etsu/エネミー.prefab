@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 3064802850434334520}
   - component: {fileID: 3007637243870679805}
   - component: {fileID: 2460606307600207313}
-  - component: {fileID: 7962167900198683568}
-  - component: {fileID: -5461286801837964870}
+  - component: {fileID: -8384112493449795402}
+  - component: {fileID: 2051084492478225406}
+  - component: {fileID: -8268440166283694787}
+  - component: {fileID: 4921403023460310004}
   m_Layer: 0
   m_Name: "\u30A8\u30CD\u30DF\u30FC"
   m_TagString: Untagged
@@ -153,7 +155,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7962167900198683568
+--- !u!114 &-8384112493449795402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,21 +167,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69eee8ac9bd43c34a8ef3b26d9315e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
+  MEMO: 
+  bom: {fileID: 0}
   start_delay: 0
   delay: 3
---- !u!114 &-5461286801837964870
+  rotationSpeed: 1.5
+  width: 5
+  height: 1.5
+--- !u!114 &2051084492478225406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393463653408157104}
-  m_Enabled: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da96f17855f42e4da6b3023c45b2856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MEMO: 
+  bom: {fileID: 0}
+  start_delay: 0
+  delay: 3
+  rotationSpeed: 1.5
+  width: 5
+  height: 1.5
+  warp_delay: 0.15
+--- !u!114 &-8268440166283694787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393463653408157104}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0023ef2eae4acc44856005f14fce4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
+  MEMO: 
+  bom: {fileID: 0}
   start_delay: 0
   delay: 3
+  rotationSpeed: 1.5
+  width: 5
+  height: 1.5
+--- !u!114 &4921403023460310004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393463653408157104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9665995c12b644a449804d31af3d9ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MEMO: 
+  bom: {fileID: 0}
+  start_delay: 0
+  delay: 3
+  rotationSpeed: 1.5
+  width: 5
+  height: 1.5
+  warp_delay: 0.15
