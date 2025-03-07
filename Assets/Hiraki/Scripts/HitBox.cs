@@ -71,9 +71,11 @@ public class HitBox : MonoBehaviour
         float dir = (hitPos.x - throw_pos.x) * (hitPos.x - throw_pos.x) + (hitPos.y - throw_pos.y) * (hitPos.y - throw_pos.y);
         return dir / throw_speed;
     }
-    private void Update()
-    {
-        //b’è“I‚Éí‚ÉŠgk‚ğŒJ‚è•Ô‚·‚æ‚¤‚Éˆ—
-        if (coroutin == null) { ContractBoxStart(); }
-    }
+
+
+    //private void Update()
+    //{
+    //    //b’è“I‚Éí‚ÉŠgk‚ğŒJ‚è•Ô‚·‚æ‚¤‚Éˆ—
+    //    //if (coroutin == null) { ContractBoxStart(); }
+    //}
 }

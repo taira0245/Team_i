@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class StageDirector : MonoBehaviour
 {
     [Header("ステージ情報")]
-    [SerializeField] ScoreMG.E_ScoreType saveType = ScoreMG.E_ScoreType.Stage1;
+    //[SerializeField] ScoreMG.E_ScoreType saveType = ScoreMG.E_ScoreType.Stage1;
     [SerializeField] PlayerDirector plDirector_;
     [SerializeField] EnemyDirector enemyDirector_;
 
@@ -146,7 +146,7 @@ public class StageDirector : MonoBehaviour
         GameActSwitch(false);
 
         //記録を更新
-        ScoreMG.SaveScoreData(plDirector_.CurrentCount, plDirector_.CurrentHP, saveType);
+        ScoreMG.SaveScoreData(plDirector_.CurrentCount, plDirector_.CurrentHP);
 
         Cursor.visible = true;
     }

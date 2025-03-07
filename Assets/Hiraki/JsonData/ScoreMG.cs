@@ -31,18 +31,7 @@ public class ScoreMG
 
 
     //各ファイル情報
-    /// <summary>
-    /// Scoreファイルタイプのリスト
-    /// </summary>
-    public enum E_ScoreType
-    {
-        Stage1,
-
-        Max
-    }
-
-    static readonly string[] SCORE_TYPE1_FILENAME = { "Score_01", };
-    JsonScoreData[] scoreDatas_ = new JsonScoreData[(int)E_ScoreType.Max];
+    JsonScoreData scoreDatas_ = new();
 
     /// <summary>
     /// 初期化処理
@@ -51,14 +40,10 @@ public class ScoreMG
     {
         if (object_ == null) {
             CreateObject();
-
-
         }
 
         //Jsonファイル読込
-        for (int i = 0; i < (int)E_ScoreType.Max; i++) {
-            scoreDatas_[i] = JsonDataMG<JsonScoreData>.Load(SCORE_TYPE1_FILENAME[i]);
-        }
+        scoreDatas_ = JsonDataMG<JsonScoreData>.Load();
     }
 
     /// <summary>
@@ -70,26 +55,17 @@ public class ScoreMG
     }
 
     /// <summary>
-    /// 高い順に保持している全てのスコアデータを取得
-    /// </summary>
-    /// <returns>int[] : 上位5つ分のスコアデータ配列</returns>
-    public static int[] GetScoreDatas(E_ScoreType type = E_ScoreType.Stage1)
-    {
-        return Instance.scoreDatas_[(int)type].ScoreDatas;
-    }
-
-    /// <summary>
     /// 最新(直近)の結果取得：Score
     /// </summary>
     /// <returns>int：直近のスコア</returns>
-    public static int GetLatestScoreData(E_ScoreType type = E_ScoreType.Stage1) { return Instance.scoreDatas_[(int)type].LatestScore; }
+    public static int GetLatestScoreData() { return Instance.scoreDatas_.LatestScore; }
 
     /// <summary>
     /// 最新(直近)の結果取得 : HP
     /// </summary>
     /// <param name="type"></param>
     /// <returns> int : HP残量</returns>
-    public static int GetHoldHP(E_ScoreType type = E_ScoreType.Stage1) { return Instance.scoreDatas_[(int)type].HoldHP; }
+    public static int GetHoldHP() { return Instance.scoreDatas_.HoldHP; }
 
 
     /// <summary>
@@ -97,12 +73,9 @@ public class ScoreMG
     /// </summary>
     /// <param name="saveScore"></param> 書き込むスコアの値
     /// <param name="type"></param>　書込み先のファイル指定
-    public static void SaveScoreData(int saveScore, int holdHP, E_ScoreType type = E_ScoreType.Stage1)
+    public static void SaveScoreData(int saveScore, int holdHP)
     {
-        Instance.scoreDatas_[(int)type].ScoreDataUpdate(saveScore);
-        JsonDataMG<JsonScoreData>.Save(SCORE_TYPE1_FILENAME[(int)type], Instance.scoreDatas_[(int)type]);
+        JsonDataMG<JsonScoreData>.Save(Instance.scoreDatas_);
     }
-
-    public int GetHoldScoreNum() => JsonScoreData.HOLD_SCORE_NUM;
 
 }

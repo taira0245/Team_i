@@ -18,7 +18,7 @@ public static class JsonDataMG<T>
     /// </summary>
     /// <param name="fileName"></param> /Resources/Json/以降
     /// <param name="data"></param> 保存するデータ
-    public static void Save(string fileName, T data)
+    public static void Save(T data)
     {
         string filepath = GetFilePath();
         string json = JsonUtility.ToJson(data);                 // jsonとして変換
@@ -33,13 +33,13 @@ public static class JsonDataMG<T>
     /// <param name="fileName"></param> ファイル名　/Resources/Json/以降
     /// <param name="data"></param>　新規作成時用のデータ
     /// <returns></returns>
-    public static T Load(string fileName)
+    public static T Load()
     {
         string filepath = GetFilePath();
         //ディレクトリが無ければディレクトリを作成
         if (!Directory.Exists(Application.dataPath + FILE_PATH)) { Directory.CreateDirectory(Application.dataPath + "/Resources/Json/"); }
         // ファイルがないとき、ファイル作成
-        if (!File.Exists(filepath)) { CreateFile(filepath); }
+        if (!File.Exists(filepath)) { CreateFile(); }
 
         StreamReader rd = new(filepath);
         string json = rd.ReadToEnd();
@@ -53,7 +53,7 @@ public static class JsonDataMG<T>
     /// </summary>
     /// <param name="filepath"></param>
     /// <param name="type"></param>
-    static void CreateFile(string fileName)
+    static void CreateFile()
     {
         string filepath = GetFilePath();
         JsonScoreData PLdata = new();

@@ -633,7 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29245153df7087e45b65431b1ac9a139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveType: 0
   plDirector_: {fileID: 980252711}
   enemyDirector_: {fileID: 301360488}
   timer_: {fileID: 150335335}
@@ -1317,13 +1316,13 @@ SceneRoots:
   m_Roots:
   - {fileID: 592346006}
   - {fileID: 20048777}
+  - {fileID: 150335329}
   - {fileID: 1813352409}
   - {fileID: 301360489}
-  - {fileID: 762970}
+  - {fileID: 1403063682}
+  - {fileID: 394321292}
+  - {fileID: 1012864837}
   - {fileID: 1537044412}
   - {fileID: 980252701}
-  - {fileID: 394321292}
-  - {fileID: 1403063682}
-  - {fileID: 1012864837}
-  - {fileID: 150335329}
   - {fileID: 39661636}
+  - {fileID: 762970}
