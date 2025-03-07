@@ -22,7 +22,6 @@ public class ScreenFade : MonoBehaviour
     private void OnGUI()
     {
         if (isFading_) {
-        Debug.Log("<color=orange>呼ばれた！！");
             //Colorの更新
             fadeColor_.a = fadeAlpha_;
             fadePanel_.color = fadeColor_;

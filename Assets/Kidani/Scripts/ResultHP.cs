@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class ResultHP : MonoBehaviour
 {
-    [SerializeField] private int hp = 3;
-
-
     public Sprite zero;
     public Sprite one;
     public Sprite two;
@@ -26,7 +23,8 @@ public class ResultHP : MonoBehaviour
 
     void Update()
     {
-        switch (hp)
+        //switch (hitpoint.GetHp())
+        switch (ScoreMG.GetHoldHP())
         {
             case 3:
                 image.sprite = three;   //HP3‚Ì‰æ‘œ•\Ž¦

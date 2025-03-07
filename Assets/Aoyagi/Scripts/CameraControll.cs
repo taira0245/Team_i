@@ -4,41 +4,60 @@ using UnityEngine;
 
 public class CameraControll : MonoBehaviour
 {
-    [SerializeField] private GameObject camera_obj;
-    [SerializeField] private int flag;
-    [SerializeField] private HitPoint hitPoint; 
+    [Header("U“®‚³‚¹‚éUI"), SerializeField]
+    private RectTransform[] shake_objs;
+    [Header("UI‚ÌŒ³À•W"),SerializeField]
+    private Vector2[] original_positions;
+    [Header("ƒJƒƒ‰‚ÌŒ³À•W")]
+    private Vector3 original_position;
+    [Header("U“®ŠÔ")]
+    private float shakeDuration;
+    [Header("UI‚ÌU“®‚Ì‹­‚³"), SerializeField]
+    private float ui_shakeMagnitude = 100f;
+    [Header("ƒJƒƒ‰‚ÌU“®‚Ì‹­‚³"), SerializeField]
+    private float camera_shakeMagnitude = 0.5f;
 
-    public void FlagPlus()
+    void Start()
     {
-        flag = 1;
+        shakeDuration = 0;
+        original_position = transform.localPosition;
+        for (int i = 0; i < shake_objs.Length; i++)
+        {
+            original_positions[i] = shake_objs[i].anchoredPosition;
+        }
     }
 
     void Update()
     {
-        DamageReaction();
+        ShakeMove();
     }
 
-    public void DamageReaction()
+    public void ShakeMove()
     {
-        switch (flag)
+        if (shakeDuration > 0)
         {
-            case 1:
-                goto case 3;
-            case 3:
-                camera_obj.transform.Translate(30 * Time.deltaTime, 0, 0);
-                if (camera_obj.transform.position.x >= 1.0f)
-                    flag++;
-                break;
-            case 2:
-                camera_obj.transform.Translate(-30 * Time.deltaTime, 0, 0);
-                if (camera_obj.transform.position.x <= -1.0f)
-                    flag++;
-                break;
-            case 4:
-                camera_obj.transform.Translate(-30 * Time.deltaTime, 0, 0);
-                if (camera_obj.transform.position.x <= 0)
-                    flag = 0;
-                break;
+            transform.localPosition = original_position + (Vector3)(Random.insideUnitCircle * camera_shakeMagnitude);
+            for (int i = 0; i < shake_objs.Length; i++)
+            {
+                shake_objs[i].anchoredPosition = original_positions[i] + Random.insideUnitCircle * ui_shakeMagnitude;
+            }
+            shakeDuration -= Time.deltaTime;
         }
+        else
+        {
+            transform.localPosition = original_position;
+            for (int i = 0; i < shake_objs.Length; i++)
+            {
+                shake_objs[i].anchoredPosition = original_positions[i];
+            }
+        }
+    }
+
+    // ƒJƒƒ‰‚ğw’èŠÔE‹­‚³‚Å—h‚ç‚·
+    /// <param name = "duration">—h‚ê‚éŠÔ</param>
+    /// <param name = "magnitude">—h‚ê‚Ì‹­‚³</param>
+    public void Shake(float duration)
+    {
+        shakeDuration = duration;
     }
 }
