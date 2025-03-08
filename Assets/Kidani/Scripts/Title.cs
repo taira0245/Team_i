@@ -8,6 +8,11 @@ public class Title : MonoBehaviour
     [SerializeField] string next_scene_name = default!;
     [SerializeField] ScreenFade screenfade;
     [SerializeField,Range(0,2)] float fadetime;
+    private void Awake()
+    {
+        AudioMG.PlayBGM("TitleBGM");
+    }
+
     public void TitleButton()
     {
         AudioMG.PlaySE("Click");
