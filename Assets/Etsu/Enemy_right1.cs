@@ -15,9 +15,20 @@ public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
     [Tooltip("”š’e")]
     [SerializeField] GameObject bom; // ”š’e–{‘Ì
     [Header("‰’i‚Ì’x‰„‰½•b‚©")]
-    [SerializeField] float start_delay; //Å‰‚Ì’x‰„
+    [Tooltip("Å’á’l")]
+    [SerializeField] float min_start_delay = 0; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+    [Tooltip("Å‚’l")]
+    [SerializeField] float max_start_delay = 5; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+
+    float start_delay;
+
     [Header("”š’e‚©‚çŸ‚Ì”š’e‚Ü‚ÅŠJ‚¯‚éŠÔ")]
-    [SerializeField] float delay = 3; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+    [Tooltip("Å’á’l")]
+    [SerializeField] float min_delay = 2; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+    [Tooltip("Å‚’l")]
+    [SerializeField] float max_delay = 10; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+
+    float delay;
 
     float time; // 1•bŒo‰ß‚²‚Æ‚É1‘‚¦‚é
     float speed = 2; // ˆÚ“®ƒXƒs[ƒh
@@ -114,12 +125,13 @@ public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
         if (start)
         {
             start = false;
+            start_delay = Random.Range(min_start_delay, max_start_delay);
             yield return new WaitForSeconds(start_delay);
         }
         ChangeAppearance();
 
         Instantiate(bom, transform.position, transform.rotation); // ”š’e‚ğ“Š‚°‚é
-        AudioMG.PlaySE("Throw");
+        delay = Random.Range(min_delay, max_delay);
         yield return new WaitForSeconds(delay); // Ÿ‚É“Š‚°‚é‚Ü‚Å‚Ì’x‰„
         limit = false;
     }
@@ -137,7 +149,6 @@ public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
                 Debug.Log("Bom ‚ÆÕ“ËIEnemy ‚ğ”j‰ó"); // ”j‰óƒƒO
                 Destroy(gameObject); // Õ“Ë‚µ‚½ê‡‚ÉEnemy‚ğ”j‰ó
                 countscript.count++;
-                AudioMG.PlaySE("Kill");
             }
         }
         else
@@ -179,6 +190,4 @@ public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
         spriteRenderer.sprite = originalSprite; // ƒXƒvƒ‰ƒCƒg‚ğŒ³‚É–ß‚·
         transform.localScale = originalScale; // ƒTƒCƒY‚ğŒ³‚É–ß‚·
     }
-
-
 }
