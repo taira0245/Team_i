@@ -48,7 +48,7 @@ public class StageDirector : MonoBehaviour
 
     private void Awake()
     {
-        AudioMG.PlayBGM("TestBGM");
+        AudioMG.PlayBGM("PlayBGM");
 #if UNITY_EDITOR
         Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
         Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");

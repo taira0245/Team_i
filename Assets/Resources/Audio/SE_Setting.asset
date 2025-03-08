@@ -13,5 +13,17 @@ MonoBehaviour:
   m_Name: SE_Setting
   m_EditorClassIdentifier: 
   AudioList:
-  - key: TestSE
-    audioFile: {fileID: 8300000, guid: 39435ef883a178d4db8fa51c80129501, type: 3}
+  - key: Select
+    audioFile: {fileID: 8300000, guid: dbcfa631f4d999c449b144963515438e, type: 3}
+  - key: Click
+    audioFile: {fileID: 8300000, guid: 93953f82fd115684695f983530bbf890, type: 3}
+  - key: Swing
+    audioFile: {fileID: 8300000, guid: e497ce89c04b7bc42a503b779e9d3811, type: 3}
+  - key: Hit
+    audioFile: {fileID: 8300000, guid: b6f91365df53e6c41bcb210b928e0209, type: 3}
+  - key: Kill
+    audioFile: {fileID: 8300000, guid: 94f61ce891b8c134d87c92b7635617b8, type: 3}
+  - key: Throw
+    audioFile: {fileID: 8300000, guid: 1fd5f2988cfeb45428605a1b1eca0e1d, type: 3}
+  - key: Miss
+    audioFile: {fileID: 8300000, guid: 4734c4bcd57607648b93f7a00a5b144c, type: 3}
