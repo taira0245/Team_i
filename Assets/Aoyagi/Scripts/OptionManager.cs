@@ -35,24 +35,12 @@ public class OptionManager : MonoBehaviour
         AudioMG.PlaySE("Click");
     }
 
-    public void PushTitleChack()
-    {
-        animator.SetBool("title_chack", true);
-        AudioMG.PlaySE("Click");
-    }
-
-    public void TitleChackNo()
-    {
-        animator.SetBool("title_chack", false);
-        AudioMG.PlaySE("Click");
-    }
-
     //シーン読み込み開始
-    public void TitleChackYes(int scene_num)
+    public void PushTitle(int scene_num)
     {
-        animator.SetBool("title_chack", false);
         animator.SetBool("option", false);
         StartCoroutine(LoadSceneCoroutine(scene_num));
+        AudioMG.PlaySE("Click");
     }
 
     //シーン読み込み
