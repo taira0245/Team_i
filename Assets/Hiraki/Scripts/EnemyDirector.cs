@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyDirector : MonoBehaviour
 {
-    [SerializeField] Spawner spawner_;
+    [SerializeField] Spawner[] spawner_;
 
     public void StopMotion(bool enableFlag)
     {
-        spawner_.enabled = enableFlag;
+        for (int i = 0; i < spawner_.Length; i++) {
+            spawner_[i].enabled = enableFlag;
+        }
     }
 }
