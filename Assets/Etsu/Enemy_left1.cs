@@ -2,90 +2,105 @@ using System.Collections;
 using UnityEngine;
 [System.Obsolete]
 
-public class Enemy_left1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
+public class Enemy_left1 : MonoBehaviour//ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ç“Šï¿½ï¿½
 {
-    [Header("ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°ƒXƒNƒŠƒvƒgu¶v")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
-    [Tooltip("ƒƒ‚‚Æ‚µ‚Ä‚¨g‚¢‚­‚¾‚³‚¢")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+    [Header("ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ç“Šï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½uï¿½Eï¿½v")]// ï¿½ï¿½]ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½Ïï¿½
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]// ï¿½ï¿½]ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½Ïï¿½
     [SerializeField] string MEMO;
+
     Bom bomscript;
     Player countscript;
 
     bool start = true; // HP
-    [Tooltip("”š’e")]
-    [SerializeField] GameObject bom; // ”š’e–{‘Ì
-    [Header("‰’i‚Ì’x‰„‰½•b‚©")]
-    [SerializeField] float start_delay; //Å‰‚Ì’x‰„
-    [Header("”š’e‚©‚çŸ‚Ì”š’e‚Ü‚ÅŠJ‚¯‚éŠÔ")]
-    [SerializeField] float delay = 3; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+    [Tooltip("ï¿½ï¿½ï¿½e")]
+    [SerializeField] GameObject bom; // ï¿½ï¿½ï¿½eï¿½{ï¿½ï¿½
+    [Header("ï¿½ï¿½ï¿½iï¿½Ì’xï¿½ï¿½ï¿½ï¿½ï¿½bï¿½ï¿½")]
+    [SerializeField] float start_delay; //ï¿½Åï¿½ï¿½Ì’xï¿½ï¿½
+    [Header("ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½çŸï¿½Ì”ï¿½ï¿½eï¿½Ü‚ÅŠJï¿½ï¿½ï¿½éï¿½ï¿½")]
+    [SerializeField] float delay = 3; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ãŸï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ì’xï¿½ï¿½
 
-    float time; // 1•bŒo‰ß‚²‚Æ‚É1‘‚¦‚é
-    float speed = 2; // ˆÚ“®ƒXƒs[ƒh
-    bool limit = false; //ˆÚ“®I‚í‚ê‚Îtrue
+    float time; // 1ï¿½bï¿½oï¿½ß‚ï¿½ï¿½Æ‚ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    float speed = 2; // ï¿½Ú“ï¿½ï¿½Xï¿½sï¿½[ï¿½h
+    bool limit = false; //ï¿½Ú“ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½true
 
-    [Header("‰ñ“]ŠÖ˜A")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+    [Header("ï¿½ï¿½]ï¿½Ö˜A")]// ï¿½ï¿½]ï¿½ÉŠÖ‚ï¿½ï¿½ï¿½Ïï¿½
 
-    [Tooltip("‰ñ“]‘¬“x")]
-    [SerializeField] float rotationSpeed = 1.5f; // ‰ñ“]‘¬“x
-    [Tooltip("‰ñ“]‚Ì• (x²)")]
-    [SerializeField] float width = 5.0f; // ‰ñ“]‚Ì• (x²)
-    [Tooltip("‰ñ“]‚Ì• (y²)")]
-    [SerializeField] float height = 1.5f; // ‰ñ“]‚Ì‚‚³ (y²)
-    Vector3 center; // ‰ñ“]‚Ì’†S
+    [Tooltip("ï¿½ï¿½]ï¿½ï¿½ï¿½x")]
+    [SerializeField] float rotationSpeed = 1.5f; // ï¿½ï¿½]ï¿½ï¿½ï¿½x
+    [Tooltip("ï¿½ï¿½]ï¿½Ì•ï¿½ (xï¿½ï¿½)")]
+    [SerializeField] float width = 5.0f; // ï¿½ï¿½]ï¿½Ì•ï¿½ (xï¿½ï¿½)
+    [Tooltip("ï¿½ï¿½]ï¿½Ì•ï¿½ (yï¿½ï¿½)")]
+    [SerializeField] float height = 1.5f; // ï¿½ï¿½]ï¿½Ìï¿½ï¿½ï¿½ (yï¿½ï¿½)
+    Vector3 center; // ï¿½ï¿½]ï¿½Ì’ï¿½ï¿½S
 
-    bool rotating = false; // ‰ñ“]‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
-    bool isMovingRight = true; // ‰E‚ÉˆÚ“®’†‚©‚Ç‚¤‚©
+    bool rotating = false; // ï¿½ï¿½]ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½
+    bool isMovingRight = true; // ï¿½Eï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 
-    float initialXPosition; // Å‰‚ÌˆÊ’u‚ğ‹L˜^‚·‚é
+    float initialXPosition; // ï¿½Åï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½Lï¿½^ï¿½ï¿½ï¿½ï¿½
+
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½")]// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éoï¿½Ä‚Ù‚ï¿½ï¿½ï¿½Sprite")]
+    [SerializeField] private Sprite throwSprite; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½g
+    [Tooltip("ï¿½ï¿½ï¿½Spriteï¿½ÌƒTï¿½Cï¿½Yï¿½ÏX")]
+    [SerializeField] private Vector3 throwScale = new Vector3(0.4f, 0.4f, 1f); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÌƒTï¿½Cï¿½Y
+    [Tooltip("ï¿½ï¿½ï¿½bï¿½ï¿½ß‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [SerializeField] private float change_sprite = 1f;
+
+    private SpriteRenderer spriteRenderer;
+    private Sprite originalSprite;
+    private Vector3 originalScale;
 
     void Start()
     {
         countscript = GameObject.FindObjectOfType<Player>();
-        bomscript = GetComponent<Bom>(); // ƒXƒ^[ƒg‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
-        center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚É‰ñ“]‚Ì’†S‚ğİ’è
+        bomscript = GetComponent<Bom>(); // ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½ÉƒRï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½gï¿½ï¿½ï¿½æ“¾
+        center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ÈˆÊ’uï¿½É‰ï¿½]ï¿½Ì’ï¿½ï¿½Sï¿½ï¿½İ’ï¿½
+        spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRendererï¿½ï¿½ï¿½æ“¾
+        originalSprite = spriteRenderer.sprite; // ï¿½ï¿½ï¿½ÌƒXï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½Lï¿½ï¿½
+        originalScale = transform.localScale; // ï¿½ï¿½ï¿½ÌƒTï¿½Cï¿½Yï¿½ï¿½ï¿½Lï¿½ï¿½
     }
-
 
     void Update()
     {
         if (isMovingRight)
         {
-            Slide(); // Å‰‚Ì‰EˆÚ“®
+            Slide(); // ï¿½Åï¿½ï¿½Ì‰Eï¿½Ú“ï¿½
         }
         else if (!limit)
         {
             if (start)
             {
-                rotating = true; // ‰ñ“]‚ğŠJn
-                Bom_spawn(); // ”š’e‚ğ“Š‚°‚é
+                rotating = true; // ï¿½ï¿½]ï¿½ï¿½ï¿½Jï¿½n
+                Bom_spawn(); // ï¿½ï¿½ï¿½eï¿½ğ“Š‚ï¿½ï¿½ï¿½
             }
             limit = true;
             Delay();
         }
 
-        // ‰ñ“]ŠJnŒã‚É‰ñ“]ˆ—‚ğÀs
+        // ï¿½ï¿½]ï¿½Jï¿½nï¿½ï¿½É‰ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s
         if (rotating)
         {
             RotateAround();
         }
 
-        // Õ“Ë”»’è
+        // ï¿½Õ“Ë”ï¿½ï¿½ï¿½
         if (bomscript != null && bomscript.change)
         {
-            Destroy(gameObject); // Enemy‚ğ”j‰ó
+            Destroy(gameObject); // Enemyï¿½ï¿½jï¿½ï¿½
         }
     }
 
     void Slide()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime); // ‰E‚ÉˆÚ“®
+        transform.Translate(Vector3.right * speed * Time.deltaTime); // ï¿½Eï¿½ÉˆÚ“ï¿½
         time += Time.deltaTime;
 
-        // ˆê’èŠÔŒã‚ÉˆÚ“®‚ªŠ®—¹‚µA‰ñ“]‚ğŠJn
+        // ï¿½ï¿½èï¿½ÔŒï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½]ï¿½ï¿½ï¿½Jï¿½n
         if (time > 2)
         {
-            isMovingRight = false; // ‰EˆÚ“®‚ªI‚í‚Á‚½‚çA‰ñ“]‚ğŠJn
-            rotating = true; // ‰ñ“]‚ğŠJn
-            initialXPosition = transform.position.x; // ˆÚ“®I—¹‚ÌˆÊ’u‚ğ‹L˜^
+            isMovingRight = false; // ï¿½Eï¿½Ú“ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½]ï¿½ï¿½ï¿½Jï¿½n
+            rotating = true; // ï¿½ï¿½]ï¿½ï¿½ï¿½Jï¿½n
+            initialXPosition = transform.position.x; // ï¿½Ú“ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½Lï¿½^
         }
     }
 
@@ -101,39 +116,70 @@ public class Enemy_left1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
             start = false;
             yield return new WaitForSeconds(start_delay);
         }
-        Instantiate(bom, transform.position, transform.rotation); // ”š’e‚ğ“Š‚°‚é
-        yield return new WaitForSeconds(delay); // Ÿ‚É“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+        ChangeAppearance();
+
+        Instantiate(bom, transform.position, transform.rotation); // ï¿½ï¿½ï¿½eï¿½ğ“Š‚ï¿½ï¿½ï¿½
+        AudioMG.PlaySE("Throw");
+        yield return new WaitForSeconds(delay); // ï¿½ï¿½ï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ì’xï¿½ï¿½
         limit = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (countscript != null) {
-            Debug.Log("Õ“ËŒŸo: " + other.gameObject.name); // ƒfƒoƒbƒOƒƒO
+
+        if (countscript != null)
+        {
+            Debug.Log("ï¿½Õ“ËŒï¿½ï¿½o: " + other.gameObject.name); // ï¿½fï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½O
+            Debug.Log("<color=yellow> ï¿½Õ“ËŒÄ‚Î‚ê‚½ï¿½I");
 
             Bom bomObj = other.GetComponent<Bom>();
-            if (bomObj != null && bomObj.change) {
-                Debug.Log("Bom ‚ÆÕ“ËIEnemy ‚ğ”j‰ó"); // ”j‰óƒƒO
-                Destroy(gameObject); // Õ“Ë‚µ‚½ê‡‚ÉEnemy‚ğ”j‰ó
+            if (bomObj != null && bomObj.change)
+            {
+                Debug.Log("Bom ï¿½ÆÕ“ËIEnemy ï¿½ï¿½jï¿½ï¿½"); // ï¿½jï¿½óƒƒO
+                Destroy(gameObject); // ï¿½Õ“Ë‚ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ï¿½Enemyï¿½ï¿½jï¿½ï¿½
                 countscript.count++;
+                AudioMG.PlaySE("Kill");
             }
+        }
+        else
+        {
+            Debug.Log("countscript == nullï¿½FEnemy_right.cs");
         }
     }
 
-    // ‰ñ“]ˆ—
+    // ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½
     void RotateAround()
     {
-        // ‰ñ“]ŠJn‚ÌˆÊ’u‚ğŠî€‚É‚µ‚Ä‰ñ“]
-        time += Time.deltaTime * rotationSpeed; // ŠÔ‚É‡‚í‚¹‚Ä‰ñ“]
-        float x = center.x + Mathf.Cos(time) * width; // xÀ•W‚ÌŒvZ
-        float y = center.y + Mathf.Sin(time) * height; // yÀ•W‚ÌŒvZ
+        // ï¿½ï¿½]ï¿½Jï¿½nï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½ï¿½î€ï¿½É‚ï¿½ï¿½Ä‰ï¿½]
+        time += Time.deltaTime * rotationSpeed; // ï¿½ï¿½ï¿½Ô‚Éï¿½ï¿½í‚¹ï¿½Ä‰ï¿½]
+        float x = center.x + Mathf.Cos(time) * width; // xï¿½ï¿½ï¿½Wï¿½ÌŒvï¿½Z
+        float y = center.y + Mathf.Sin(time) * height; // yï¿½ï¿½ï¿½Wï¿½ÌŒvï¿½Z
 
-        transform.position = new Vector3(x, y, 0); // V‚µ‚¢ˆÊ’u‚ÉˆÚ“®
+        transform.position = new Vector3(x, y, 0); // ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½ÉˆÚ“ï¿½
     }
 
-    // ‰ñ“]‚ğŠJn‚·‚éˆ—
+    // ï¿½ï¿½]ï¿½ï¿½ï¿½Jï¿½nï¿½ï¿½ï¿½éˆï¿½ï¿½
     public void StartRotating()
     {
         rotating = true;
     }
+
+    void ChangeAppearance()
+    {
+        if (spriteRenderer != null && throwSprite != null)
+        {
+            spriteRenderer.sprite = throwSprite; // ï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ÏX
+            transform.localScale = throwScale; // ï¿½Tï¿½Cï¿½Yï¿½ÏX
+            StartCoroutine(ResetAppearance()); // 0.4ï¿½bï¿½ï¿½É–ß‚ï¿½
+        }
+    }
+
+    IEnumerator ResetAppearance()
+    {
+        yield return new WaitForSeconds(change_sprite);
+        spriteRenderer.sprite = originalSprite; // ï¿½Xï¿½vï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
+        transform.localScale = originalScale; // ï¿½Tï¿½Cï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½
+    }
+
+
 }
