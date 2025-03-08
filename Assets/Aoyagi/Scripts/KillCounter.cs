@@ -14,14 +14,14 @@ public class KillCounter : MonoBehaviour
     private void Start()
     {
         kill_count = 0;
-        kill_count_text.text = "Kill：" + kill_count;
+        kill_count_text.text = "" + kill_count;
     }
 
     //この関数を一回実行するとキルスコアが1増える
     public void KillCountPlus()
     {
         kill_count++;
-        kill_count_text.text = "Kill : " + kill_count;
+        kill_count_text.text = "" + kill_count;
     }
 
     //キルカウント取得用
