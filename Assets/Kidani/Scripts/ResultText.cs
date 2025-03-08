@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ResultText : MonoBehaviour
 {
-    public HitPoint hitpoint; // インスペクターでアタッチ
-
     public Sprite newSprite;
     private Image image;
 
