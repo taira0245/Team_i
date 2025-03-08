@@ -35,7 +35,8 @@ public class StageDirector : MonoBehaviour
     [SerializeField] float startDelay = 2.5f;
     [Tooltip("ゲーム終了後からフェード開始までの遅滞時間")]
     [SerializeField] float endDelay = 2.5f;
-    [SerializeField] float CountInterval = 0.8f;
+    //[SerializeField] float CountInterval = 0.8f;
+    [Tooltip("ゲームをプレイする時間")]
     [SerializeField] float game_time = 30;
     float elapsed_time = 0; //経過時間
 
