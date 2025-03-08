@@ -85,6 +85,7 @@ public class StageDirector : MonoBehaviour
 
         plDirector_.SceneInit();
         GameActSwitch(false);
+        Time.timeScale = 1;
         StartCoroutine(StageFlow());
     }
 
@@ -104,12 +105,6 @@ public class StageDirector : MonoBehaviour
         startAnim_.PlayUIAnimation();
 
         yield return delayTime;
-        //float elapsedTime = 0;
-        //while (true) {
-        //    yield return null;
-        //    elapsedTime += Time.unscaledDeltaTime;
-        //    if (elapsedTime >= startDelay) { break; }
-        //}
 
 
         //ゲーム開始
@@ -170,6 +165,7 @@ public class StageDirector : MonoBehaviour
     {
         timer_.GameEnd();
         GameActSwitch(false);
+        Time.timeScale = 1;
 
         //記録を更新
         ScoreMG.SaveScoreData(plDirector_.CurrentCount, plDirector_.CurrentHP);
@@ -177,30 +173,32 @@ public class StageDirector : MonoBehaviour
         Cursor.visible = true;
     }
 
-    List<Bom> boms = new();
-    List<GameObject> Enemys = new();
+    List<Bom> bomList = new();
+    List<GameObject> EnemyList = new();
     /// <summary>
     /// ゲーム動作の停止制御
     /// </summary>
-    void GameActSwitch(bool enableFlag)
+    public void GameActSwitch(bool enableFlag)
     {
         if (!enableFlag) {
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             //タイマー停止
             timer_.StopAnim();
+
+            
 
         }
         else {
             //enemy_F.Clear();
-            //enemy_R.Clear();
-            boms.Clear();
-            Enemys.Clear();
+            ////enemy_R.Clear();
+            //bomList.Clear();
+            //EnemyList.Clear();
 
             //タイマー再会
             timer_.PlayAnim();
-            //Time.timeScale = 1;
+            Time.timeScale = 1;
         }
         plDirector_.StopMotion(enableFlag);
-        enemyDirector_.StopMotion(enableFlag);
+        enemyDirector_.MotionAct(enableFlag);
     }
 }
