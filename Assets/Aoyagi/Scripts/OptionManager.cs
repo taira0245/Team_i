@@ -18,28 +18,33 @@ public class OptionManager : MonoBehaviour
     public void PushOption(bool is_option)
     {
         animator.SetBool("option", is_option);
+        AudioMG.PlaySE("Click");
     }
 
     //trueなら設定画面・falseならポーズ画面
     public void PushSetting(bool is_setting)
     {
         animator.SetBool("setting", is_setting);
+        AudioMG.PlaySE("Click");
     }
 
     //ボタンのインスペクター画面で、リスタートするシーン番号を入れる
     public void PushReStart(int scene_num)
     {
         StartCoroutine(LoadSceneCoroutine(scene_num));
+        AudioMG.PlaySE("Click");
     }
 
     public void PushTitleChack()
     {
         animator.SetBool("title_chack", true);
+        AudioMG.PlaySE("Click");
     }
 
     public void TitleChackNo()
     {
         animator.SetBool("title_chack", false);
+        AudioMG.PlaySE("Click");
     }
 
     //シーン読み込み開始
@@ -49,8 +54,6 @@ public class OptionManager : MonoBehaviour
         animator.SetBool("option", false);
         StartCoroutine(LoadSceneCoroutine(scene_num));
     }
-
-    
 
     //シーン読み込み
     private IEnumerator LoadSceneCoroutine(int scene_num)
