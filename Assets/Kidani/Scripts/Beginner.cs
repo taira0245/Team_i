@@ -10,6 +10,7 @@ public class Beginner : MonoBehaviour
     [SerializeField, Range(0, 2)] float fadetime;
     public void BeginnerButton()
     {
+        AudioMG.PlaySE("Click");
         //SceneManager.LoadScene(next_scene_name);
         screenfade.SetSceneChange(next_scene_name, fadetime);
     }
