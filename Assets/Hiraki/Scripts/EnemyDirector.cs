@@ -10,6 +10,10 @@ public class EnemyDirector : MonoBehaviour
     List<GameObject> bomList = new();
     List<GameObject> EnemyList = new();
 
+    /// <summary>
+    /// Stageã‚ÌEnemy‚ÆBom‚ÌActiveØ‘Ö‚¦ˆ—
+    /// </summary>
+    /// <param name="enableFlag"></param>
     public void MotionAct(bool enableFlag)
     {
         for (int i = 0; i < spawner_.Length; i++) {
@@ -38,12 +42,14 @@ public class EnemyDirector : MonoBehaviour
                 EnemyList.Add(Enemy[i]);
                 Enemy[i].SetActive(false);
             }
+            Debug.Log("Find Enemy Count : " +  Enemy.Length);
 
             GameObject[] Bom = GameObject.FindGameObjectsWithTag("Enemy");
             for (int i = 0; i < Bom.Length; i++) {
                 EnemyList.Add(Bom[i]);
                 Bom[i].SetActive(false);
             }
+            Debug.Log("Find Bom Count : " + Enemy.Length);
         }
 
     }
