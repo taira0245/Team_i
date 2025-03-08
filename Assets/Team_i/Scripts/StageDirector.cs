@@ -12,6 +12,7 @@ public class StageDirector : MonoBehaviour
     [SerializeField] PlayerDirector plDirector_;
     [SerializeField] EnemyDirector enemyDirector_;
 
+
     [Header("UIの設定")]
     [Tooltip("Timerインスタンス参照")]
     [SerializeField] Timer timer_;
@@ -20,15 +21,21 @@ public class StageDirector : MonoBehaviour
     [SerializeField] HitPoint hitPoint_;
 
 
+    [Header("アニメーターの設定")]
+    [SerializeField] GameStartAnimationUI startAnim_;
+    [SerializeField] GameEndAnimationUI endAnim_;
+
     [Header("遷移先シーンの設定")]
     [SerializeField] string nextSceneName = default!;
     [SerializeField] ScreenFade fade_;
-    [SerializeField,Range(0,4.0f)] float fadeTime_;
+    [SerializeField, Range(0, 3.0f)] float fadeTime_;
 
 
     [Header("ゲーム時間の設定")]
-    [Tooltip("プレイ開始の遅滞時間")]
+    [Tooltip("フェード終了後からプレイ開始までの遅滞時間")]
     [SerializeField] float startDelay = 2.5f;
+    [Tooltip("ゲーム終了後からフェード開始までの遅滞時間")]
+    [SerializeField] float endDelay = 2.5f;
     [SerializeField] float CountInterval = 0.8f;
     [SerializeField] float game_time = 30;
     float elapsed_time = 0; //経過時間
@@ -39,18 +46,21 @@ public class StageDirector : MonoBehaviour
     bool isPause = false;
 
 
-    //  Debug
-#if UNITY_EDITOR
     private void Awake()
     {
+
+#if UNITY_EDITOR
         Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
         Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");
         Debug.Log("<color=green>hitPoint_ : " + hitPoint_ + "</color>");
         crSceneName = SceneManager.GetActiveScene().name;
         debugFontStyle_.fontSize = 15;
         debugFontStyle_.normal.textColor = Color.red;
+#endif
     }
 
+
+#if UNITY_EDITOR
     GUIStyle debugFontStyle_ = new();
     string crSceneName;
     private void OnGUI()
@@ -62,6 +72,7 @@ public class StageDirector : MonoBehaviour
         GUI.Label(new Rect(x, y += line_y, 150, 50), "経過時間 : " + elapsed_time, debugFontStyle_);
         GUI.Label(new Rect(x, y += line_y, 150, 50), "IsGame : " + isGame, debugFontStyle_);
         GUI.Label(new Rect(x, y += line_y, 150, 50), "IsPause : " + isPause, debugFontStyle_);
+        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsFadeing : " + ScreenFade.isFading_, debugFontStyle_);
     }
 #endif
 
@@ -81,31 +92,47 @@ public class StageDirector : MonoBehaviour
     WaitForSecondsRealtime delayTime;
     IEnumerator StageFlow()
     {
+        delayTime = new(startDelay);
+        gameover_Flag = false;
+        elapsed_time = 0;
+
         //シーンフェード終了待ち
         while (ScreenFade.isFading_) {
             yield return null;
         }
 
-        delayTime = new(startDelay);
-        gameover_Flag = false;
-        elapsed_time = 0;
+        //シーン処理開始
+        startAnim_.PlayUIAnimation();
+
         yield return delayTime;
+        //float elapsedTime = 0;
+        //while (true) {
+        //    yield return null;
+        //    elapsedTime += Time.unscaledDeltaTime;
+        //    if (elapsedTime >= startDelay) { break; }
+        //}
 
 
+        //ゲーム開始
         isGame = true;
         GameActSwitch(true);
-
         while (isGame) {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.P)) {
-                isPause = !isPause;
-                GameActSwitch(!isPause);
-            }
+            ////pause処理
+            //if (Input.GetKeyDown(KeyCode.P)) {
+            //    isPause = !isPause;
+            //    GameActSwitch(!isPause);
+            //}
 
             //メイン処理
             isGame = GameStageExe();
         }
+
+        //ゲーム終了
+        endAnim_.PlayUIAnimation();
+        delayTime = new(endDelay);
+        yield return delayTime;
 
         //シーン遷移
         fade_.SetSceneChange(nextSceneName, fadeTime_);
@@ -117,7 +144,7 @@ public class StageDirector : MonoBehaviour
     /// <returns> ゲームプレイ可能状態を返す</returns>
     bool GameStageExe()
     {
-        if(plDirector_.CheckChangeCount()) { killCounter_.KillCountPlus(); }
+        if (plDirector_.CheckChangeCount()) { killCounter_.KillCountPlus(); }
         if (plDirector_.CheckChangeHP()) {
             hitPoint_.Damage();
             if (plDirector_.CurrentHP <= 0) {
@@ -158,20 +185,21 @@ public class StageDirector : MonoBehaviour
     void GameActSwitch(bool enableFlag)
     {
         if (!enableFlag) {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             //タイマー停止
             timer_.StopAnim();
 
         }
-        else{
+        else {
             //enemy_F.Clear();
             //enemy_R.Clear();
             boms.Clear();
 
             //タイマー再会
             timer_.PlayAnim();
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
         }
         plDirector_.StopMotion(enableFlag);
+        enemyDirector_.StopMotion(enableFlag);
     }
 }

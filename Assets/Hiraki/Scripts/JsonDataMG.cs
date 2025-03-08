@@ -55,6 +55,8 @@ public static class JsonDataMG<T>
     /// <param name="type"></param>
     static void CreateFile()
     {
+        Debug.Log("Jsonファイルが作成されました。");
+
         string filepath = GetFilePath();
         JsonScoreData PLdata = new();
         Debug.Log("PLData : " + PLdata);

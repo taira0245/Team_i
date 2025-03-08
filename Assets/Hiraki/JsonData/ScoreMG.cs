@@ -15,6 +15,7 @@ public class ScoreMG
         //Instanceが使用された際、instance_==nullの場合はインスタンスを生成
         get { instance_ ??= new ScoreMG(); return instance_; }
     }
+
     static GameObject object_ = null;
     void CreateObject()
     {
@@ -25,7 +26,11 @@ public class ScoreMG
 
 
     //各ファイル情報
-    JsonScoreData scoreDatas_ = new();
+    JsonScoreData scoreData_ = new();
+
+    //0308：結果が外部ファイルに反映されないバグの急造対策用
+    int killCount_ = 0;
+    int HPCount_ = 0;
 
     /// <summary>
     /// 初期化処理
@@ -37,7 +42,7 @@ public class ScoreMG
         }
 
         //Jsonファイル読込
-        scoreDatas_ = JsonDataMG<JsonScoreData>.Load();
+        scoreData_ = JsonDataMG<JsonScoreData>.Load();
     }
 
     /// <summary>
@@ -52,14 +57,22 @@ public class ScoreMG
     /// 最新(直近)の結果取得：Score
     /// </summary>
     /// <returns>int：直近のスコア</returns>
-    public static int GetLatestScoreData() { return Instance.scoreDatas_.LatestScore; }
+    public static int GetLatestScoreData()
+    {
+        //return Instance.scoreDatas_.LatestScore;
+        return Instance.killCount_;
+    }
 
     /// <summary>
     /// 最新(直近)の結果取得 : HP
     /// </summary>
     /// <param name="type"></param>
     /// <returns> int : HP残量</returns>
-    public static int GetHoldHP() { return Instance.scoreDatas_.HoldHP; }
+    public static int GetHoldHP()
+    {
+        //return Instance.scoreDatas_.HoldHP;
+        return Instance.HPCount_;
+    }
 
 
     /// <summary>
@@ -69,7 +82,12 @@ public class ScoreMG
     /// <param name="type"></param>　書込み先のファイル指定
     public static void SaveScoreData(int saveScore, int holdHP)
     {
-        JsonDataMG<JsonScoreData>.Save(Instance.scoreDatas_);
+        Instance.scoreData_.LatestScore = saveScore;
+        Instance.scoreData_.HoldHP = holdHP;
+        JsonDataMG<JsonScoreData>.Save(Instance.scoreData_);
+
+        Instance.killCount_ = saveScore;
+        Instance.HPCount_ = holdHP;
     }
 
 }
