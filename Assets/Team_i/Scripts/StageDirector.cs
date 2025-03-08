@@ -18,6 +18,7 @@ public class StageDirector : MonoBehaviour
 
     [SerializeField] KillCounter killCounter_;
     [SerializeField] HitPoint hitPoint_;
+    [SerializeField] OptionManager option_;
 
 
     [Header("アニメーターの設定")]
@@ -117,11 +118,11 @@ public class StageDirector : MonoBehaviour
         while (isGame) {
             yield return null;
 
-            ////pause処理
-            //if (Input.GetKeyDown(KeyCode.P)) {
-            //    isPause = !isPause;
-            //    GameActSwitch(!isPause);
-            //}
+            //pause処理
+            if (Input.GetKeyDown(KeyCode.P)) {
+                isPause = !isPause;
+                GameActSwitch(!isPause);
+            }
 
             //メイン処理
             isGame = GameStageExe();
