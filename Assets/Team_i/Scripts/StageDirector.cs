@@ -8,16 +8,16 @@ using UnityEngine.SceneManagement;
 public class StageDirector : MonoBehaviour
 {
     [Header("ステージ情報")]
-    [SerializeField] PlayerDirector plDirector_;
-    [SerializeField] EnemyDirector enemyDirector_;
+    [SerializeField] protected PlayerDirector plDirector_;
+    [SerializeField] protected EnemyDirector enemyDirector_;
 
 
     [Header("UIの設定")]
     [Tooltip("Timerインスタンス参照")]
     [SerializeField] Timer timer_;
 
-    [SerializeField] KillCounter killCounter_;
-    [SerializeField] HitPoint hitPoint_;
+    [SerializeField] protected KillCounter killCounter_;
+    [SerializeField] protected HitPoint hitPoint_;
     [SerializeField] OptionManager option_;
 
 
@@ -43,7 +43,7 @@ public class StageDirector : MonoBehaviour
 
 
     bool isGame = false;
-    bool gameover_Flag = false;
+    protected bool gameover_Flag = false;
     bool isPause = false;
 
 
@@ -130,7 +130,7 @@ public class StageDirector : MonoBehaviour
     /// ゲームのメイン処理
     /// </summary>
     /// <returns> ゲームプレイ可能状態を返す</returns>
-    bool GameStageExe()
+    protected virtual bool GameStageExe()
     {
         if (plDirector_.CheckChangeCount()) { killCounter_.KillCountPlus(); }
         if (plDirector_.CheckChangeHP()) {
@@ -155,9 +155,9 @@ public class StageDirector : MonoBehaviour
     /// <summary>
     /// ゲームステージ終了時の共通処理
     /// </summary>
-    void GameTerminate()
+    protected void GameTerminate()
     {
-        timer_.GameEnd();
+        if (timer_ != null) timer_.GameEnd();
         GameActSwitch(false);
         Time.timeScale = 1;
 
@@ -178,14 +178,14 @@ public class StageDirector : MonoBehaviour
         if (!enableFlag) {
             Time.timeScale = 0;
             //タイマー停止
-            timer_.StopAnim();
+            if(timer_ != null) timer_.StopAnim();
 
             
 
         }
         else {
             //タイマー再会
-            timer_.PlayAnim();
+            if (timer_ != null) timer_.PlayAnim();
             Time.timeScale = 1;
         }
         plDirector_.StopMotion(enableFlag);
