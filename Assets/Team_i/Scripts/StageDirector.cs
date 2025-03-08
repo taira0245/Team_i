@@ -157,7 +157,7 @@ public class StageDirector : MonoBehaviour
     /// </summary>
     protected void GameTerminate()
     {
-        timer_.GameEnd();
+        if (timer_ != null) timer_.GameEnd();
         GameActSwitch(false);
         Time.timeScale = 1;
 
@@ -178,14 +178,14 @@ public class StageDirector : MonoBehaviour
         if (!enableFlag) {
             Time.timeScale = 0;
             //タイマー停止
-            timer_.StopAnim();
+            if(timer_ != null) timer_.StopAnim();
 
             
 
         }
         else {
             //タイマー再会
-            timer_.PlayAnim();
+            if (timer_ != null) timer_.PlayAnim();
             Time.timeScale = 1;
         }
         plDirector_.StopMotion(enableFlag);

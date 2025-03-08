@@ -16,5 +16,7 @@ public class EndlessDirector : StageDirector
             }
         }
 
+        return true;
+
     }
 }

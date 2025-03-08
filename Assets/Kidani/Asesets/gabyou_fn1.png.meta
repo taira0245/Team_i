@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gabyou_fn1_0: 2954306826034669187
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

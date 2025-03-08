@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      waku_fn1_0: 903224131989638301
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

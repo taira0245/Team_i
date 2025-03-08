@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      taitoruhe_fn1_0: -8128621727005995840
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
