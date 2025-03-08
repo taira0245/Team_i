@@ -131,6 +131,7 @@ public class Enemy_left1 : MonoBehaviour//移動してから投げ
         ChangeAppearance();
 
         Instantiate(bom, transform.position, transform.rotation); // 爆弾を投げる
+        AudioMG.PlaySE("Throw");
         delay = Random.Range(min_delay, max_delay);
         yield return new WaitForSeconds(delay); // 次に投げるまでの遅延
         limit = false;
@@ -149,6 +150,7 @@ public class Enemy_left1 : MonoBehaviour//移動してから投げ
                 Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
                 Destroy(gameObject); // 衝突した場合にEnemyを破壊
                 countscript.count++;
+                AudioMG.PlaySE("Kill");
             }
         }
         else
