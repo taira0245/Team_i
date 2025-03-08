@@ -222,6 +222,9 @@ public class AudioMG
             //デフォルトで再生(PlayOneShot()で再生)
             source_.PlayOneShot(data_.Clip);
         }
+
+        Debug.Log("<color=green>SE＿" + key + "　再生");
+
         return true;
     }
 
