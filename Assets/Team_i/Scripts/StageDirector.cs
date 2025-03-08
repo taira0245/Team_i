@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class StageDirector : MonoBehaviour
 {
     [Header("ステージ情報")]
-    //[SerializeField] ScoreMG.E_ScoreType saveType = ScoreMG.E_ScoreType.Stage1;
     [SerializeField] PlayerDirector plDirector_;
     [SerializeField] EnemyDirector enemyDirector_;
 
@@ -48,7 +47,7 @@ public class StageDirector : MonoBehaviour
 
     private void Awake()
     {
-
+        AudioMG.PlayBGM("TestBGM");
 #if UNITY_EDITOR
         Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
         Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");
@@ -79,8 +78,6 @@ public class StageDirector : MonoBehaviour
 
     private void Start()
     {
-        AudioMG.PlayBGM("TestBGM");
-
         //カーソルの非表示
         Cursor.visible = false;
 
