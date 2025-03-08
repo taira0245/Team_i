@@ -50,32 +50,32 @@ public class StageDirector : MonoBehaviour
     private void Awake()
     {
         AudioMG.PlayBGM("PlayBGM");
-#if UNITY_EDITOR
-        Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
-        Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");
-        Debug.Log("<color=green>hitPoint_ : " + hitPoint_ + "</color>");
-        crSceneName = SceneManager.GetActiveScene().name;
-        debugFontStyle_.fontSize = 15;
-        debugFontStyle_.normal.textColor = Color.red;
-#endif
+//#if UNITY_EDITOR
+//        Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
+//        Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");
+//        Debug.Log("<color=green>hitPoint_ : " + hitPoint_ + "</color>");
+//        crSceneName = SceneManager.GetActiveScene().name;
+//        debugFontStyle_.fontSize = 15;
+//        debugFontStyle_.normal.textColor = Color.red;
+//#endif
     }
 
 
-#if UNITY_EDITOR
-    GUIStyle debugFontStyle_ = new();
-    string crSceneName;
-    private void OnGUI()
-    {
-        float x = 20.0f;
-        float y = 10.0f;
-        float line_y = 20.0f;
-        GUI.Label(new Rect(x, y, 150, 50), "シーン名 : " + crSceneName, debugFontStyle_);
-        GUI.Label(new Rect(x, y += line_y, 150, 50), "経過時間 : " + elapsed_time, debugFontStyle_);
-        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsGame : " + isGame, debugFontStyle_);
-        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsPause : " + isPause, debugFontStyle_);
-        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsFadeing : " + ScreenFade.isFading_, debugFontStyle_);
-    }
-#endif
+//#if UNITY_EDITOR
+//    GUIStyle debugFontStyle_ = new();
+//    string crSceneName;
+//    private void OnGUI()
+//    {
+//        float x = 20.0f;
+//        float y = 10.0f;
+//        float line_y = 20.0f;
+//        GUI.Label(new Rect(x, y, 150, 50), "シーン名 : " + crSceneName, debugFontStyle_);
+//        GUI.Label(new Rect(x, y += line_y, 150, 50), "経過時間 : " + elapsed_time, debugFontStyle_);
+//        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsGame : " + isGame, debugFontStyle_);
+//        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsPause : " + isPause, debugFontStyle_);
+//        GUI.Label(new Rect(x, y += line_y, 150, 50), "IsFadeing : " + ScreenFade.isFading_, debugFontStyle_);
+//    }
+//#endif
 
 
     private void Start()
@@ -177,20 +177,20 @@ public class StageDirector : MonoBehaviour
         isPause = !enableFlag;
         if (!enableFlag) {
             Time.timeScale = 0;
+
             //タイマー停止
             if(timer_ != null) timer_.StopAnim();
             Cursor.visible = true;
-
-
 
         }
         else {
             //タイマー再会
             if (timer_ != null) timer_.PlayAnim();
+
             Time.timeScale = 1;
             Cursor.visible = false;
         }
-        plDirector_.StopMotion(enableFlag);
+        plDirector_.MotionAct(enableFlag);
         enemyDirector_.MotionAct(enableFlag);
     }
 }

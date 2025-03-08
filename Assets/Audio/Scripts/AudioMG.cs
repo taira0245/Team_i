@@ -22,8 +22,8 @@ public class AudioMG
     { get { instance_ ??= new AudioMG(); return instance_; } }
 
     //SEチャンネル数
-    const int BGM_CHANNEL = 1;
-    const int SE_CHANNEL = 1;
+    const int BGM_CHANNEL = 0;
+    const int SE_CHANNEL = 0;
 
     //volumeの保存・デフォルト値
     public const string BGM_VOLUME_KEY = "BGM_Volume";
@@ -165,7 +165,7 @@ public class AudioMG
 
 
         //ChangeVolume()を利用してvolumeを設定
-        ChangeVolume(PlayerPrefs.GetFloat(BGM_VOLUME_KEY), PlayerPrefs.GetFloat(SE_VOLUME_KEY));
+        SetChangeVolume(PlayerPrefs.GetFloat(BGM_VOLUME_KEY), PlayerPrefs.GetFloat(SE_VOLUME_KEY));
     }
 
     void CreateObj()
@@ -366,13 +366,13 @@ public class AudioMG
     /// </summary>
     /// <param name="BGMvolume"></param> 変更後のBGMボリュームの値
     /// <param name="SEvolume"></param>　変更後のSEボリュームの値
-    public static void ChangeVolume(float BGMvolume, float SEvolume) { Instance.SetBGMVolume(BGMvolume); Instance.SetSEVolume(SEvolume); }
+    public static void SetChangeVolume(float BGMvolume, float SEvolume) { Instance.SetBGMVolume(BGMvolume); Instance.SetSEVolume(SEvolume); }
 
     /// <summary>
     /// BGMのvolume変更
     /// </summary>
     /// <param name="BGMvolume"></param>
-    public static void ChangeBGMVolume(float BGMvolume) { Instance.SetBGMVolume(BGMvolume); }
+    public static void SetChangeBGMVolume(float BGMvolume) { Instance.SetBGMVolume(BGMvolume); }
     void SetBGMVolume(float volume)
     {
         Debug.Log("呼ばれた！");
@@ -385,7 +385,7 @@ public class AudioMG
     /// SEのvolume変更
     /// </summary>
     /// <param name="SEvolume"></param>
-    public static void ChangeSEVolume(float SEvolume) { Instance.SetSEVolume(SEvolume); }
+    public static void SetChangeSEVolume(float SEvolume) { Instance.SetSEVolume(SEvolume); }
     void SetSEVolume(float volume)
     {
         sourceSEDefault_.volume = volume;

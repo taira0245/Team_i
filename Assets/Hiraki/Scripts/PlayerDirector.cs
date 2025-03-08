@@ -50,7 +50,7 @@ public class PlayerDirector : MonoBehaviour
     }
 
 
-    public void StopMotion(bool enableFlag)
+    public void MotionAct(bool enableFlag)
     {
         hitBox_.enabled = enableFlag;
         player_.enabled = enableFlag;
