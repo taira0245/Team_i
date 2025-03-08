@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      yakyuuba_Fn1_0: -4665562948124896341
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
