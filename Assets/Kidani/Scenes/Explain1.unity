@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next_scene_name: TutorialScene
   screenfade: {fileID: 1275473913}
-  fadetime: 1
+  fadetime: 0
 --- !u!1 &254461627
 GameObject:
   m_ObjectHideFlags: 0
