@@ -785,6 +785,10 @@ PrefabInstance:
       propertyPath: purezent3
       value: 
       objectReference: {fileID: 980252706}
+    - target: {fileID: 6725288335707887311, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
+      propertyPath: space_cool_time
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7241079743481554975, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
       propertyPath: m_Name
       value: PlayerCanvas
@@ -1039,9 +1043,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5263261758157459410, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 3611353398512075303, guid: 320ad21e10cba68499915c7f8025e728, type: 3}
+    - target: {fileID: 5263261758157459410, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
+      propertyPath: max_interval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263261758157459410, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
+      propertyPath: min_interval
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6756583894098605837, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
       propertyPath: m_Name
       value: Enemys
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482211428445893962, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 6145312606892884846, guid: 628909da18c8902478af7b422c61b581, type: 3}
+    - target: {fileID: 7482211428445893962, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
+      propertyPath: max_interval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482211428445893962, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
+      propertyPath: min_interval
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8529596491979933670, guid: 28b59da9a45bb124aa0b9365436bdfa0, type: 3}
       propertyPath: m_LocalPosition.x
