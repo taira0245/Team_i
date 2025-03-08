@@ -1000,7 +1000,7 @@ PrefabInstance:
       objectReference: {fileID: 2033534548}
     - target: {fileID: 6725288335707887311, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
       propertyPath: space_cool_time
-      value: 0.4
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7241079743481554975, guid: 3a52364c6e65fa0459a391f4ca2802f3, type: 3}
       propertyPath: m_Name
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f1cdef36478139e42893dc7aa18ab1cc, type: 3}
+  m_Sprite: {fileID: -4665562948124896341, guid: b0ae37b56db88b348939858a73a6512c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
