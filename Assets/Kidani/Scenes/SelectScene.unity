@@ -271,9 +271,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game, Assembly-CSharp
-        m_MethodName: GameButton
+      - m_Target: {fileID: 219516426}
+        m_TargetAssemblyTypeName: Endless, Assembly-CSharp
+        m_MethodName: SceneChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 219516423}
   - component: {fileID: 219516425}
   - component: {fileID: 219516424}
+  - component: {fileID: 219516426}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -430,6 +431,21 @@ MonoBehaviour:
   next_scene_name: Stage2
   screenfade: {fileID: 1120552557}
   fadetime: 1
+--- !u!114 &219516426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219516419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2533f16d002bb46b8e2df3171a8199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Stage4
+  fade_: {fileID: 1120552557}
+  fadeTime: 1
 --- !u!1 &1026459332
 GameObject:
   m_ObjectHideFlags: 0
