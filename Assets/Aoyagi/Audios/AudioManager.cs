@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        bgmSlider = GameObject.Find("BGMSlider").GetComponent<Slider>();
+        seSlider = GameObject.Find("SESlider").GetComponent<Slider>();
         //ƒZ[ƒu‚µ‚Ä‚¢‚½‰¹—Ê‚ğ“Ç‚İ‚İ
         float bgmValue = PlayerPrefs.GetFloat("BGM_Volume", 0);
         float seValue = PlayerPrefs.GetFloat("SE_Volume", 0);
