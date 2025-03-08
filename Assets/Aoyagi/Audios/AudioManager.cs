@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider seSlider;
 
-    void Awake()
+    void Start()
     {
         bgmSlider = GameObject.Find("BGMSlider").GetComponent<Slider>();
         seSlider = GameObject.Find("SESlider").GetComponent<Slider>();
