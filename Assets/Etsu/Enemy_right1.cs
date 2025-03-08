@@ -131,6 +131,7 @@ public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
         ChangeAppearance();
 
         Instantiate(bom, transform.position, transform.rotation); // ”š’e‚ğ“Š‚°‚é
+        AudioMG.PlaySE("Throw");
         delay = Random.Range(min_delay, max_delay);
         yield return new WaitForSeconds(delay); // Ÿ‚É“Š‚°‚é‚Ü‚Å‚Ì’x‰„
         limit = false;
@@ -149,6 +150,7 @@ public class Enemy_right1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
                 Debug.Log("Bom ‚ÆÕ“ËIEnemy ‚ğ”j‰ó"); // ”j‰óƒƒO
                 Destroy(gameObject); // Õ“Ë‚µ‚½ê‡‚ÉEnemy‚ğ”j‰ó
                 countscript.count++;
+                AudioMG.PlaySE("Kill");
             }
         }
         else
