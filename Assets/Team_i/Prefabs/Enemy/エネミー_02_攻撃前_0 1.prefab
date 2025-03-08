@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8289449188046133537}
   - component: {fileID: 1313770008625759770}
   - component: {fileID: -2137526627777695518}
-  - component: {fileID: -2501665616245642853}
+  - component: {fileID: -2397889598309730860}
   m_Layer: 0
   m_Name: "\u30A8\u30CD\u30DF\u30FC_02_\u653B\u6483\u524D_0 1"
   m_TagString: Untagged
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2501665616245642853
+--- !u!114 &-2397889598309730860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MEMO: 
-  bom: {fileID: 8045886604029988366, guid: 9c44451659441e04eb38f83bf67899f1, type: 3}
+  bom: {fileID: 4290909117684143843, guid: 8804cea9dda4a4c4d8c8b5b15c532bfc, type: 3}
   min_start_delay: 0
   max_start_delay: 5
   min_delay: 2
