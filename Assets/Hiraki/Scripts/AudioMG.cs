@@ -26,8 +26,8 @@ public class AudioMG
     const int SE_CHANNEL = 1;
 
     //volumeの保存・デフォルト値
-    public const string BGM_VOLUME_KEY = "BGM_VOLUME_KEY";
-    public const string SE_VOLUME_KEY = "SE_VOLUME_KEY";
+    public const string BGM_VOLUME_KEY = "BGM_Volume";
+    public const string SE_VOLUME_KEY = "SE_Volume";
     public const float BGM_VOLUME_DEFULT = 0.3f;
     public const float SE_VOLUME_DEFULT = 0.3f;
 
