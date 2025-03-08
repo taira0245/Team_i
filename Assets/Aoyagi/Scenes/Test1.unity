@@ -302,7 +302,7 @@ AudioSource:
   m_GameObject: {fileID: 1118563419}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 6319721176582940121, guid: 5a5641af2abb2d043986302d9cf57cb5, type: 2}
+  OutputAudioMixerGroup: {fileID: 6976903032307607121, guid: 5a5641af2abb2d043986302d9cf57cb5, type: 2}
   m_audioClip: {fileID: 8300000, guid: 814dbca455755824c9daa847b2f9bc7e, type: 3}
   m_Resource: {fileID: 8300000, guid: 814dbca455755824c9daa847b2f9bc7e, type: 3}
   m_PlayOnAwake: 1
@@ -484,10 +484,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 842426212525697372, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3062484760259811842, guid: db9a14f61ce3c704895a280dc3f26b89, type: 3}
     - target: {fileID: 1866498978656233670, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2416783982338047308, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3779098451903602082, guid: ae8b31e5982e57744b2e2a081a042bdc, type: 3}
     - target: {fileID: 3289531392912607191, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -500,6 +508,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4486903721091447767, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8868355969321006838, guid: faf412a90471cd246809c4dc9a532fe3, type: 3}
     - target: {fileID: 4735738536975267500, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
@@ -543,6 +555,10 @@ PrefabInstance:
     - target: {fileID: 6561100151207557317, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756193089415832634, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
+      propertyPath: m_Text
+      value: 0000
       objectReference: {fileID: 0}
     - target: {fileID: 8831873681648271852, guid: 2d8f4e7d63769044cb7f1de9454dd0b2, type: 3}
       propertyPath: m_Pivot.x
