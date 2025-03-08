@@ -15,9 +15,20 @@ public class Enemy_right1 : MonoBehaviour//移動してから投げ
     [Tooltip("爆弾")]
     [SerializeField] GameObject bom; // 爆弾本体
     [Header("初段の遅延何秒か")]
-    [SerializeField] float start_delay; //最初の遅延
+    [Tooltip("最低値")]
+    [SerializeField] float min_start_delay = 0; //投げた後次投げるまでの遅延
+    [Tooltip("最高値")]
+    [SerializeField] float max_start_delay = 5; //投げた後次投げるまでの遅延
+
+    float start_delay;
+
     [Header("爆弾から次の爆弾まで開ける時間")]
-    [SerializeField] float delay = 3; //投げた後次投げるまでの遅延
+    [Tooltip("最低値")]
+    [SerializeField] float min_delay = 2; //投げた後次投げるまでの遅延
+    [Tooltip("最高値")]
+    [SerializeField] float max_delay = 10; //投げた後次投げるまでの遅延
+
+    float delay;
 
     float time; // 1秒経過ごとに1増える
     float speed = 2; // 移動スピード
@@ -38,21 +49,38 @@ public class Enemy_right1 : MonoBehaviour//移動してから投げ
 
     float initialXPosition; // 最初の位置を記録する
 
+    [Header("投げモーション")]// 投げモーション
+    [Tooltip("投げた時に出てほしいSprite")]
+    [SerializeField] private Sprite throwSprite; // 投げるときのスプライト
+    [Tooltip("上のSpriteのサイズ変更")]
+    [SerializeField] private Vector3 throwScale = new Vector3(0.4f, 0.4f, 1f); // 投げるときのサイズ
+    [Tooltip("何秒後戻したいか")]
+    [SerializeField] private float change_sprite = 1f;
+
+    private SpriteRenderer spriteRenderer;
+    private Sprite originalSprite;
+    private Vector3 originalScale;
+
     void Start()
     {
         countscript = GameObject.FindObjectOfType<Player>();
         bomscript = GetComponent<Bom>(); // スタート時にコンポーネントを取得
         center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ランダムな位置に回転の中心を設定
+        spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRendererを取得
+        originalSprite = spriteRenderer.sprite; // 元のスプライトを記憶
+        originalScale = transform.localScale; // 元のサイズを記憶
     }
-
 
     void Update()
     {
-        if (isMovingRight) {
+        if (isMovingRight)
+        {
             Slide(); // 最初の右移動
         }
-        else if (!limit) {
-            if (start) {
+        else if (!limit)
+        {
+            if (start)
+            {
                 rotating = true; // 回転を開始
                 Bom_spawn(); // 爆弾を投げる
             }
@@ -61,12 +89,14 @@ public class Enemy_right1 : MonoBehaviour//移動してから投げ
         }
 
         // 回転開始後に回転処理を実行
-        if (rotating) {
+        if (rotating)
+        {
             RotateAround();
         }
 
         // 衝突判定
-        if (bomscript != null && bomscript.change) {
+        if (bomscript != null && bomscript.change)
+        {
             Destroy(gameObject); // Enemyを破壊
         }
     }
@@ -77,7 +107,8 @@ public class Enemy_right1 : MonoBehaviour//移動してから投げ
         time += Time.deltaTime;
 
         // 一定時間後に移動が完了し、回転を開始
-        if (time > 2) {
+        if (time > 2)
+        {
             isMovingRight = false; // 右移動が終わったら、回転を開始
             rotating = true; // 回転を開始
             initialXPosition = transform.position.x; // 移動終了時の位置を記録
@@ -91,29 +122,37 @@ public class Enemy_right1 : MonoBehaviour//移動してから投げ
 
     IEnumerator Bom_spawn()
     {
-        if (start) {
+        if (start)
+        {
             start = false;
+            start_delay = Random.Range(min_start_delay, max_start_delay);
             yield return new WaitForSeconds(start_delay);
         }
+        ChangeAppearance();
+
         Instantiate(bom, transform.position, transform.rotation); // 爆弾を投げる
+        delay = Random.Range(min_delay, max_delay);
         yield return new WaitForSeconds(delay); // 次に投げるまでの遅延
         limit = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (countscript != null) {
+        if (countscript != null)
+        {
             Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
             Debug.Log("<color=yellow> 衝突呼ばれた！");
 
             Bom bomObj = other.GetComponent<Bom>();
-            if (bomObj != null && bomObj.change) {
+            if (bomObj != null && bomObj.change)
+            {
                 Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
                 Destroy(gameObject); // 衝突した場合にEnemyを破壊
                 countscript.count++;
             }
         }
-        else {
+        else
+        {
             Debug.Log("countscript == null：Enemy_right.cs");
         }
     }
@@ -133,5 +172,22 @@ public class Enemy_right1 : MonoBehaviour//移動してから投げ
     public void StartRotating()
     {
         rotating = true;
+    }
+
+    void ChangeAppearance()
+    {
+        if (spriteRenderer != null && throwSprite != null)
+        {
+            spriteRenderer.sprite = throwSprite; // スプライト変更
+            transform.localScale = throwScale; // サイズ変更
+            StartCoroutine(ResetAppearance()); // 0.4秒後に戻す
+        }
+    }
+
+    IEnumerator ResetAppearance()
+    {
+        yield return new WaitForSeconds(change_sprite);
+        spriteRenderer.sprite = originalSprite; // スプライトを元に戻す
+        transform.localScale = originalScale; // サイズを元に戻す
     }
 }

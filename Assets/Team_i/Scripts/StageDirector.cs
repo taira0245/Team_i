@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class StageDirector : MonoBehaviour
 {
     [Header("ステージ情報")]
-    //[SerializeField] ScoreMG.E_ScoreType saveType = ScoreMG.E_ScoreType.Stage1;
     [SerializeField] PlayerDirector plDirector_;
     [SerializeField] EnemyDirector enemyDirector_;
 
@@ -19,6 +18,7 @@ public class StageDirector : MonoBehaviour
 
     [SerializeField] KillCounter killCounter_;
     [SerializeField] HitPoint hitPoint_;
+    [SerializeField] OptionManager option_;
 
 
     [Header("アニメーターの設定")]
@@ -36,7 +36,8 @@ public class StageDirector : MonoBehaviour
     [SerializeField] float startDelay = 2.5f;
     [Tooltip("ゲーム終了後からフェード開始までの遅滞時間")]
     [SerializeField] float endDelay = 2.5f;
-    [SerializeField] float CountInterval = 0.8f;
+    //[SerializeField] float CountInterval = 0.8f;
+    [Tooltip("ゲームをプレイする時間")]
     [SerializeField] float game_time = 30;
     float elapsed_time = 0; //経過時間
 
@@ -48,7 +49,7 @@ public class StageDirector : MonoBehaviour
 
     private void Awake()
     {
-
+        AudioMG.PlayBGM("PlayBGM");
 #if UNITY_EDITOR
         Debug.Log("<color=green>timer_ : " + timer_ + "</color>");
         Debug.Log("<color=green>killCounter_ : " + killCounter_ + "</color>");
@@ -79,13 +80,12 @@ public class StageDirector : MonoBehaviour
 
     private void Start()
     {
-        AudioMG.PlayBGM("TestBGM");
-
         //カーソルの非表示
         Cursor.visible = false;
 
         plDirector_.SceneInit();
         GameActSwitch(false);
+        Time.timeScale = 1;
         StartCoroutine(StageFlow());
     }
 
@@ -105,12 +105,6 @@ public class StageDirector : MonoBehaviour
         startAnim_.PlayUIAnimation();
 
         yield return delayTime;
-        //float elapsedTime = 0;
-        //while (true) {
-        //    yield return null;
-        //    elapsedTime += Time.unscaledDeltaTime;
-        //    if (elapsedTime >= startDelay) { break; }
-        //}
 
 
         //ゲーム開始
@@ -118,12 +112,6 @@ public class StageDirector : MonoBehaviour
         GameActSwitch(true);
         while (isGame) {
             yield return null;
-
-            ////pause処理
-            //if (Input.GetKeyDown(KeyCode.P)) {
-            //    isPause = !isPause;
-            //    GameActSwitch(!isPause);
-            //}
 
             //メイン処理
             isGame = GameStageExe();
@@ -171,6 +159,7 @@ public class StageDirector : MonoBehaviour
     {
         timer_.GameEnd();
         GameActSwitch(false);
+        Time.timeScale = 1;
 
         //記録を更新
         ScoreMG.SaveScoreData(plDirector_.CurrentCount, plDirector_.CurrentHP);
@@ -178,28 +167,28 @@ public class StageDirector : MonoBehaviour
         Cursor.visible = true;
     }
 
-    List<Bom> boms = new();
+    List<Bom> bomList = new();
+    List<GameObject> EnemyList = new();
     /// <summary>
     /// ゲーム動作の停止制御
     /// </summary>
-    void GameActSwitch(bool enableFlag)
+    public void GameActSwitch(bool enableFlag)
     {
+        isPause = !enableFlag;
         if (!enableFlag) {
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             //タイマー停止
             timer_.StopAnim();
 
+            
+
         }
         else {
-            //enemy_F.Clear();
-            //enemy_R.Clear();
-            boms.Clear();
-
             //タイマー再会
             timer_.PlayAnim();
-            //Time.timeScale = 1;
+            Time.timeScale = 1;
         }
         plDirector_.StopMotion(enableFlag);
-        enemyDirector_.StopMotion(enableFlag);
+        enemyDirector_.MotionAct(enableFlag);
     }
 }

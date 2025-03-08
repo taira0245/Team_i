@@ -2,90 +2,116 @@ using System.Collections;
 using UnityEngine;
 [System.Obsolete]
 
-public class Enemy_left1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
+public class Enemy_left1 : MonoBehaviour//ç§»å‹•ã—ã¦ã‹ã‚‰æŠ•ã’
 {
-    [Header("ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°ƒXƒNƒŠƒvƒgu¶v")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
-    [Tooltip("ƒƒ‚‚Æ‚µ‚Ä‚¨g‚¢‚­‚¾‚³‚¢")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+    [Header("ç§»å‹•ã—ã¦ã‹ã‚‰æŠ•ã’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã€Œå³ã€")]// å›è»¢ã«é–¢ã™ã‚‹å¤‰æ•°
+    [Tooltip("ãƒ¡ãƒ¢ã¨ã—ã¦ãŠä½¿ã„ãã ã•ã„")]// å›è»¢ã«é–¢ã™ã‚‹å¤‰æ•°
     [SerializeField] string MEMO;
+
     Bom bomscript;
     Player countscript;
 
     bool start = true; // HP
-    [Tooltip("”š’e")]
-    [SerializeField] GameObject bom; // ”š’e–{‘Ì
-    [Header("‰’i‚Ì’x‰„‰½•b‚©")]
-    [SerializeField] float start_delay; //Å‰‚Ì’x‰„
-    [Header("”š’e‚©‚çŸ‚Ì”š’e‚Ü‚ÅŠJ‚¯‚éŠÔ")]
-    [SerializeField] float delay = 3; //“Š‚°‚½ŒãŸ“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+    [Tooltip("çˆ†å¼¾")]
+    [SerializeField] GameObject bom; // çˆ†å¼¾æœ¬ä½“
+    [Header("åˆæ®µã®é…å»¶ä½•ç§’ã‹")]
+    [Tooltip("æœ€ä½å€¤")]
+    [SerializeField] float min_start_delay = 0; //æŠ•ã’ãŸå¾Œæ¬¡æŠ•ã’ã‚‹ã¾ã§ã®é…å»¶
+    [Tooltip("æœ€é«˜å€¤")]
+    [SerializeField] float max_start_delay = 5; //æŠ•ã’ãŸå¾Œæ¬¡æŠ•ã’ã‚‹ã¾ã§ã®é…å»¶
 
-    float time; // 1•bŒo‰ß‚²‚Æ‚É1‘‚¦‚é
-    float speed = 2; // ˆÚ“®ƒXƒs[ƒh
-    bool limit = false; //ˆÚ“®I‚í‚ê‚Îtrue
+    float start_delay;
 
-    [Header("‰ñ“]ŠÖ˜A")]// ‰ñ“]‚ÉŠÖ‚·‚é•Ï”
+    [Header("çˆ†å¼¾ã‹ã‚‰æ¬¡ã®çˆ†å¼¾ã¾ã§é–‹ã‘ã‚‹æ™‚é–“")]
+    [Tooltip("æœ€ä½å€¤")]
+    [SerializeField] float min_delay = 2; //æŠ•ã’ãŸå¾Œæ¬¡æŠ•ã’ã‚‹ã¾ã§ã®é…å»¶
+    [Tooltip("æœ€é«˜å€¤")]
+    [SerializeField] float max_delay = 10; //æŠ•ã’ãŸå¾Œæ¬¡æŠ•ã’ã‚‹ã¾ã§ã®é…å»¶
 
-    [Tooltip("‰ñ“]‘¬“x")]
-    [SerializeField] float rotationSpeed = 1.5f; // ‰ñ“]‘¬“x
-    [Tooltip("‰ñ“]‚Ì• (x²)")]
-    [SerializeField] float width = 5.0f; // ‰ñ“]‚Ì• (x²)
-    [Tooltip("‰ñ“]‚Ì• (y²)")]
-    [SerializeField] float height = 1.5f; // ‰ñ“]‚Ì‚‚³ (y²)
-    Vector3 center; // ‰ñ“]‚Ì’†S
+    float delay;
 
-    bool rotating = false; // ‰ñ“]‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
-    bool isMovingRight = true; // ‰E‚ÉˆÚ“®’†‚©‚Ç‚¤‚©
+    float time; // 1ç§’çµŒéã”ã¨ã«1å¢—ãˆã‚‹
+    float speed = 2; // ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰
+    bool limit = false; //ç§»å‹•çµ‚ã‚ã‚Œã°true
 
-    float initialXPosition; // Å‰‚ÌˆÊ’u‚ğ‹L˜^‚·‚é
+    [Header("å›è»¢é–¢é€£")]// å›è»¢ã«é–¢ã™ã‚‹å¤‰æ•°
+
+    [Tooltip("å›è»¢é€Ÿåº¦")]
+    [SerializeField] float rotationSpeed = 1.5f; // å›è»¢é€Ÿåº¦
+    [Tooltip("å›è»¢ã®å¹… (xè»¸)")]
+    [SerializeField] float width = 5.0f; // å›è»¢ã®å¹… (xè»¸)
+    [Tooltip("å›è»¢ã®å¹… (yè»¸)")]
+    [SerializeField] float height = 1.5f; // å›è»¢ã®é«˜ã• (yè»¸)
+    Vector3 center; // å›è»¢ã®ä¸­å¿ƒ
+
+    bool rotating = false; // å›è»¢ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹
+    bool isMovingRight = true; // å³ã«ç§»å‹•ä¸­ã‹ã©ã†ã‹
+
+    float initialXPosition; // æœ€åˆã®ä½ç½®ã‚’è¨˜éŒ²ã™ã‚‹
+
+    [Header("æŠ•ã’ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³")]// æŠ•ã’ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
+    [Tooltip("æŠ•ã’ãŸæ™‚ã«å‡ºã¦ã»ã—ã„Sprite")]
+    [SerializeField] private Sprite throwSprite; // æŠ•ã’ã‚‹ã¨ãã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
+    [Tooltip("ä¸Šã®Spriteã®ã‚µã‚¤ã‚ºå¤‰æ›´")]
+    [SerializeField] private Vector3 throwScale = new Vector3(0.4f, 0.4f, 1f); // æŠ•ã’ã‚‹ã¨ãã®ã‚µã‚¤ã‚º
+    [Tooltip("ä½•ç§’å¾Œæˆ»ã—ãŸã„ã‹")]
+    [SerializeField] private float change_sprite = 1f;
+
+    private SpriteRenderer spriteRenderer;
+    private Sprite originalSprite;
+    private Vector3 originalScale;
 
     void Start()
     {
         countscript = GameObject.FindObjectOfType<Player>();
-        bomscript = GetComponent<Bom>(); // ƒXƒ^[ƒg‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
-        center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚É‰ñ“]‚Ì’†S‚ğİ’è
+        bomscript = GetComponent<Bom>(); // ã‚¹ã‚¿ãƒ¼ãƒˆæ™‚ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—
+        center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ãƒ©ãƒ³ãƒ€ãƒ ãªä½ç½®ã«å›è»¢ã®ä¸­å¿ƒã‚’è¨­å®š
+        spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRendererã‚’å–å¾—
+        originalSprite = spriteRenderer.sprite; // å…ƒã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚’è¨˜æ†¶
+        originalScale = transform.localScale; // å…ƒã®ã‚µã‚¤ã‚ºã‚’è¨˜æ†¶
     }
-
 
     void Update()
     {
         if (isMovingRight)
         {
-            Slide(); // Å‰‚Ì‰EˆÚ“®
+            Slide(); // æœ€åˆã®å³ç§»å‹•
         }
         else if (!limit)
         {
             if (start)
             {
-                rotating = true; // ‰ñ“]‚ğŠJn
-                Bom_spawn(); // ”š’e‚ğ“Š‚°‚é
+                rotating = true; // å›è»¢ã‚’é–‹å§‹
+                Bom_spawn(); // çˆ†å¼¾ã‚’æŠ•ã’ã‚‹
             }
             limit = true;
             Delay();
         }
 
-        // ‰ñ“]ŠJnŒã‚É‰ñ“]ˆ—‚ğÀs
+        // å›è»¢é–‹å§‹å¾Œã«å›è»¢å‡¦ç†ã‚’å®Ÿè¡Œ
         if (rotating)
         {
             RotateAround();
         }
 
-        // Õ“Ë”»’è
+        // è¡çªåˆ¤å®š
         if (bomscript != null && bomscript.change)
         {
-            Destroy(gameObject); // Enemy‚ğ”j‰ó
+            Destroy(gameObject); // Enemyã‚’ç ´å£Š
         }
     }
 
     void Slide()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime); // ‰E‚ÉˆÚ“®
+        transform.Translate(Vector3.right * speed * Time.deltaTime); // å³ã«ç§»å‹•
         time += Time.deltaTime;
 
-        // ˆê’èŠÔŒã‚ÉˆÚ“®‚ªŠ®—¹‚µA‰ñ“]‚ğŠJn
+        // ä¸€å®šæ™‚é–“å¾Œã«ç§»å‹•ãŒå®Œäº†ã—ã€å›è»¢ã‚’é–‹å§‹
         if (time > 2)
         {
-            isMovingRight = false; // ‰EˆÚ“®‚ªI‚í‚Á‚½‚çA‰ñ“]‚ğŠJn
-            rotating = true; // ‰ñ“]‚ğŠJn
-            initialXPosition = transform.position.x; // ˆÚ“®I—¹‚ÌˆÊ’u‚ğ‹L˜^
+            isMovingRight = false; // å³ç§»å‹•ãŒçµ‚ã‚ã£ãŸã‚‰ã€å›è»¢ã‚’é–‹å§‹
+            rotating = true; // å›è»¢ã‚’é–‹å§‹
+            initialXPosition = transform.position.x; // ç§»å‹•çµ‚äº†æ™‚ã®ä½ç½®ã‚’è¨˜éŒ²
         }
     }
 
@@ -99,41 +125,69 @@ public class Enemy_left1 : MonoBehaviour//ˆÚ“®‚µ‚Ä‚©‚ç“Š‚°
         if (start)
         {
             start = false;
+            start_delay = Random.Range(min_start_delay, max_start_delay);
             yield return new WaitForSeconds(start_delay);
         }
-        Instantiate(bom, transform.position, transform.rotation); // ”š’e‚ğ“Š‚°‚é
-        yield return new WaitForSeconds(delay); // Ÿ‚É“Š‚°‚é‚Ü‚Å‚Ì’x‰„
+        ChangeAppearance();
+
+        Instantiate(bom, transform.position, transform.rotation); // çˆ†å¼¾ã‚’æŠ•ã’ã‚‹
+        delay = Random.Range(min_delay, max_delay);
+        yield return new WaitForSeconds(delay); // æ¬¡ã«æŠ•ã’ã‚‹ã¾ã§ã®é…å»¶
         limit = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (countscript != null) {
-            Debug.Log("Õ“ËŒŸo: " + other.gameObject.name); // ƒfƒoƒbƒOƒƒO
+        if (countscript != null)
+        {
+            Debug.Log("è¡çªæ¤œå‡º: " + other.gameObject.name); // ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°
+            Debug.Log("<color=yellow> è¡çªå‘¼ã°ã‚ŒãŸï¼");
 
             Bom bomObj = other.GetComponent<Bom>();
-            if (bomObj != null && bomObj.change) {
-                Debug.Log("Bom ‚ÆÕ“ËIEnemy ‚ğ”j‰ó"); // ”j‰óƒƒO
-                Destroy(gameObject); // Õ“Ë‚µ‚½ê‡‚ÉEnemy‚ğ”j‰ó
+            if (bomObj != null && bomObj.change)
+            {
+                Debug.Log("Bom ã¨è¡çªï¼Enemy ã‚’ç ´å£Š"); // ç ´å£Šãƒ­ã‚°
+                Destroy(gameObject); // è¡çªã—ãŸå ´åˆã«Enemyã‚’ç ´å£Š
                 countscript.count++;
             }
         }
+        else
+        {
+            Debug.Log("countscript == nullï¼šEnemy_right.cs");
+        }
     }
 
-    // ‰ñ“]ˆ—
+    // å›è»¢å‡¦ç†
     void RotateAround()
     {
-        // ‰ñ“]ŠJn‚ÌˆÊ’u‚ğŠî€‚É‚µ‚Ä‰ñ“]
-        time += Time.deltaTime * rotationSpeed; // ŠÔ‚É‡‚í‚¹‚Ä‰ñ“]
-        float x = center.x + Mathf.Cos(time) * width; // xÀ•W‚ÌŒvZ
-        float y = center.y + Mathf.Sin(time) * height; // yÀ•W‚ÌŒvZ
+        // å›è»¢é–‹å§‹æ™‚ã®ä½ç½®ã‚’åŸºæº–ã«ã—ã¦å›è»¢
+        time += Time.deltaTime * rotationSpeed; // æ™‚é–“ã«åˆã‚ã›ã¦å›è»¢
+        float x = center.x + Mathf.Cos(time) * width; // xåº§æ¨™ã®è¨ˆç®—
+        float y = center.y + Mathf.Sin(time) * height; // yåº§æ¨™ã®è¨ˆç®—
 
-        transform.position = new Vector3(x, y, 0); // V‚µ‚¢ˆÊ’u‚ÉˆÚ“®
+        transform.position = new Vector3(x, y, 0); // æ–°ã—ã„ä½ç½®ã«ç§»å‹•
     }
 
-    // ‰ñ“]‚ğŠJn‚·‚éˆ—
+    // å›è»¢ã‚’é–‹å§‹ã™ã‚‹å‡¦ç†
     public void StartRotating()
     {
         rotating = true;
+    }
+
+    void ChangeAppearance()
+    {
+        if (spriteRenderer != null && throwSprite != null)
+        {
+            spriteRenderer.sprite = throwSprite; // ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆå¤‰æ›´
+            transform.localScale = throwScale; // ã‚µã‚¤ã‚ºå¤‰æ›´
+            StartCoroutine(ResetAppearance()); // 0.4ç§’å¾Œã«æˆ»ã™
+        }
+    }
+
+    IEnumerator ResetAppearance()
+    {
+        yield return new WaitForSeconds(change_sprite);
+        spriteRenderer.sprite = originalSprite; // ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚’å…ƒã«æˆ»ã™
+        transform.localScale = originalScale; // ã‚µã‚¤ã‚ºã‚’å…ƒã«æˆ»ã™
     }
 }

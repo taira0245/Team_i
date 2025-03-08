@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: BGM_Setting
   m_EditorClassIdentifier: 
   AudioList:
-  - key: TestBGM
-    audioFile: {fileID: 8300000, guid: 814dbca455755824c9daa847b2f9bc7e, type: 3}
-  - key: TestBGM2
-    audioFile: {fileID: 8300000, guid: 814dbca455755824c9daa847b2f9bc7e, type: 3}
+  - key: TitleBGM
+    audioFile: {fileID: 8300000, guid: a0817745aea833e4db2eb6169bd08325, type: 3}
+  - key: SelectBGM
+    audioFile: {fileID: 8300000, guid: a0817745aea833e4db2eb6169bd08325, type: 3}
+  - key: PlayBGM
+    audioFile: {fileID: 8300000, guid: 4455eff2512f00c458897f016667d9d8, type: 3}
