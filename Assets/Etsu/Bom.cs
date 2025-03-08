@@ -117,4 +117,22 @@ public class Bom : MonoBehaviour
         space_cool_time = true; // スペースキーを再び押せるようにする
         Debug.Log("クールタイム終了！スペースキーが再び使えます");
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Bom otherBom = other.GetComponent<Bom>();
+
+        // 衝突した相手が爆弾かどうか確認
+        if (otherBom != null)
+        {
+            // もし自分（this）が打ち返された爆弾で、相手がまだストライクゾーンへ向かっている爆弾なら
+            if (this.change && !otherBom.change)
+            {
+                Debug.Log("打ち返した爆弾が他の爆弾と衝突！ストライクゾーンへ向かっている爆弾だけを破壊");
+
+                // 相手の爆弾を破壊
+                Destroy(otherBom.gameObject);
+            }
+        }
+    }
 }
