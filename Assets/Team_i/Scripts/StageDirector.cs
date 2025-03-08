@@ -113,12 +113,6 @@ public class StageDirector : MonoBehaviour
         while (isGame) {
             yield return null;
 
-            //pause処理
-            if (Input.GetKeyDown(KeyCode.P)) {
-                isPause = !isPause;
-                GameActSwitch(!isPause);
-            }
-
             //メイン処理
             isGame = GameStageExe();
         }
@@ -180,6 +174,7 @@ public class StageDirector : MonoBehaviour
     /// </summary>
     public void GameActSwitch(bool enableFlag)
     {
+        isPause = !enableFlag;
         if (!enableFlag) {
             Time.timeScale = 0;
             //タイマー停止
@@ -189,11 +184,6 @@ public class StageDirector : MonoBehaviour
 
         }
         else {
-            //enemy_F.Clear();
-            ////enemy_R.Clear();
-            //bomList.Clear();
-            //EnemyList.Clear();
-
             //タイマー再会
             timer_.PlayAnim();
             Time.timeScale = 1;
