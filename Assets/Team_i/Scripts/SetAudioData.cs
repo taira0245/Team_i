@@ -15,7 +15,7 @@ namespace AudioSetting
             [SerializeField] string key;
             public string Key { get { return key; } }
 
-            [Header("音源ファイル")]
+            [Tooltip("音源ファイル")]
             [SerializeField] AudioClip audioFile;
             public AudioClip AudioFile { get { return audioFile; } }
         }
