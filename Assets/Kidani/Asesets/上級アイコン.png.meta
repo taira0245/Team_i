@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aa6897122bcd7a34babbd70b42acc1be
+guid: 538da6735afed5f479361a3495f9c23d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -528507430585463172
-    second: HP0_0
+      213: -1917927035671779886
+    second: "\u4E0A\u7D1A\u30A2\u30A4\u30B3\u30F3_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP0_0
+      name: "\u4E0A\u7D1A\u30A2\u30A4\u30B3\u30F3_0"
       rect:
         serializedVersion: 2
-        x: 359
-        y: 342
-        width: 1645
-        height: 546
+        x: 306
+        y: 285
+        width: 565
+        height: 607
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7e8cc2ca4d5aa8f0800000000000000
-      internalID: -528507430585463172
+      spriteID: 2d56aadc5872265e0800000000000000
+      internalID: -1917927035671779886
       vertices: []
       indices: 
       edges: []

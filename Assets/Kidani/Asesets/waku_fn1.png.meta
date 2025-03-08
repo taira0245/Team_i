@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aa6897122bcd7a34babbd70b42acc1be
+guid: 00a83f0d71f828d4593c5bee1bb4846f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -528507430585463172
-    second: HP0_0
+      213: 903224131989638301
+    second: waku_fn1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HP0_0
+      name: waku_fn1_0
       rect:
         serializedVersion: 2
-        x: 359
-        y: 342
-        width: 1645
-        height: 546
+        x: 0
+        y: 0
+        width: 641
+        height: 397
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7e8cc2ca4d5aa8f0800000000000000
-      internalID: -528507430585463172
+      spriteID: d9c8dc30095e88c00800000000000000
+      internalID: 903224131989638301
       vertices: []
       indices: 
       edges: []
