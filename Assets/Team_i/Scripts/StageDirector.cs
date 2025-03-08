@@ -179,14 +179,16 @@ public class StageDirector : MonoBehaviour
             Time.timeScale = 0;
             //タイマー停止
             if(timer_ != null) timer_.StopAnim();
+            Cursor.visible = true;
 
-            
+
 
         }
         else {
             //タイマー再会
             if (timer_ != null) timer_.PlayAnim();
             Time.timeScale = 1;
+            Cursor.visible = false;
         }
         plDirector_.StopMotion(enableFlag);
         enemyDirector_.MotionAct(enableFlag);
