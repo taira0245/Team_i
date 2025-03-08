@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mouixtukai_fn1_0: -6059030390466028078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
