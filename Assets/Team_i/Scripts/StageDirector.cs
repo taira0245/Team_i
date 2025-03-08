@@ -177,6 +177,7 @@ public class StageDirector : MonoBehaviour
     }
 
     List<Bom> boms = new();
+    List<GameObject> Enemys = new();
     /// <summary>
     /// ゲーム動作の停止制御
     /// </summary>
@@ -192,6 +193,7 @@ public class StageDirector : MonoBehaviour
             //enemy_F.Clear();
             //enemy_R.Clear();
             boms.Clear();
+            Enemys.Clear();
 
             //タイマー再会
             timer_.PlayAnim();
