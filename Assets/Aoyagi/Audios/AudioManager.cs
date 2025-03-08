@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("BGM_Volume", value);
         audioMixer.SetFloat("BGM_Volume", ConvertVolume2dB(value));
-        AudioMG.ChangeBGMVolume(PlayerPrefs.GetFloat("BGM_Volume"));
+        AudioMG.SetChangeBGMVolume(PlayerPrefs.GetFloat("BGM_Volume"));
     }
 
     //SEÇÃâπó í≤êﬂ
@@ -39,6 +39,6 @@ public class AudioManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("SE_Volume", value);
         audioMixer.SetFloat("SE_Volume", ConvertVolume2dB(value));
-        AudioMG.ChangeSEVolume(PlayerPrefs.GetFloat("SE_Volume"));
+        AudioMG.SetChangeSEVolume(PlayerPrefs.GetFloat("SE_Volume"));
     }
 }
