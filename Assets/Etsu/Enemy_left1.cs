@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy_left1 : MonoBehaviour//移動してから投げ
 {
-    [Header("移動してから投げスクリプト「左」")]// 回転に関する変数
+    [Header("移動してから投げスクリプト「右」")]// 回転に関する変数
     [Tooltip("メモとしてお使いください")]// 回転に関する変数
     [SerializeField] string MEMO;
+
     Bom bomscript;
     Player countscript;
 
@@ -37,13 +38,27 @@ public class Enemy_left1 : MonoBehaviour//移動してから投げ
 
     float initialXPosition; // 最初の位置を記録する
 
+    [Header("投げモーション")]// 投げモーション
+    [Tooltip("投げた時に出てほしいSprite")]
+    [SerializeField] private Sprite throwSprite; // 投げるときのスプライト
+    [Tooltip("上のSpriteのサイズ変更")]
+    [SerializeField] private Vector3 throwScale = new Vector3(0.4f, 0.4f, 1f); // 投げるときのサイズ
+    [Tooltip("何秒後戻したいか")]
+    [SerializeField] private float change_sprite = 1f;
+
+    private SpriteRenderer spriteRenderer;
+    private Sprite originalSprite;
+    private Vector3 originalScale;
+
     void Start()
     {
         countscript = GameObject.FindObjectOfType<Player>();
         bomscript = GetComponent<Bom>(); // スタート時にコンポーネントを取得
         center = new Vector3(Random.Range(5.0f, -5.0f), Random.Range(1f, 2.0f), 0); // ランダムな位置に回転の中心を設定
+        spriteRenderer = GetComponent<SpriteRenderer>(); // SpriteRendererを取得
+        originalSprite = spriteRenderer.sprite; // 元のスプライトを記憶
+        originalScale = transform.localScale; // 元のサイズを記憶
     }
-
 
     void Update()
     {
@@ -101,21 +116,33 @@ public class Enemy_left1 : MonoBehaviour//移動してから投げ
             start = false;
             yield return new WaitForSeconds(start_delay);
         }
+        ChangeAppearance();
+
         Instantiate(bom, transform.position, transform.rotation); // 爆弾を投げる
+        AudioMG.PlaySE("Throw");
         yield return new WaitForSeconds(delay); // 次に投げるまでの遅延
         limit = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
-
-        Bom bomObj = other.GetComponent<Bom>();
-        if (bomObj != null && bomObj.change)
+        if (countscript != null)
         {
-            Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
-            Destroy(gameObject); // 衝突した場合にEnemyを破壊
-            countscript.count++;
+            Debug.Log("衝突検出: " + other.gameObject.name); // デバッグログ
+            Debug.Log("<color=yellow> 衝突呼ばれた！");
+
+            Bom bomObj = other.GetComponent<Bom>();
+            if (bomObj != null && bomObj.change)
+            {
+                Debug.Log("Bom と衝突！Enemy を破壊"); // 破壊ログ
+                Destroy(gameObject); // 衝突した場合にEnemyを破壊
+                countscript.count++;
+                AudioMG.PlaySE("Kill");
+            }
+        }
+        else
+        {
+            Debug.Log("countscript == null：Enemy_right.cs");
         }
     }
 
@@ -135,4 +162,23 @@ public class Enemy_left1 : MonoBehaviour//移動してから投げ
     {
         rotating = true;
     }
+
+    void ChangeAppearance()
+    {
+        if (spriteRenderer != null && throwSprite != null)
+        {
+            spriteRenderer.sprite = throwSprite; // スプライト変更
+            transform.localScale = throwScale; // サイズ変更
+            StartCoroutine(ResetAppearance()); // 0.4秒後に戻す
+        }
+    }
+
+    IEnumerator ResetAppearance()
+    {
+        yield return new WaitForSeconds(change_sprite);
+        spriteRenderer.sprite = originalSprite; // スプライトを元に戻す
+        transform.localScale = originalScale; // サイズを元に戻す
+    }
+
+
 }

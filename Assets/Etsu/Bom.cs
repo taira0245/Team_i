@@ -47,12 +47,15 @@ public class Bom : MonoBehaviour
             move_direction = (mousePosition - transform.position).normalized;
             change = true; // 方向変更フラグ
 
-           Destroy(gameObject, 4f); // 4秒後にオブジェクトを削除
+            AudioMG.PlaySE("Hit");
+            StartCoroutine(SpaceCooldown()); // クールタイム開始
+            Destroy(gameObject, 4f); // 4秒後にオブジェクトを削除
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && space_cool_time)
+       else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && space_cool_time)
         {
-                Debug.Log("スペースキーが押された！クールタイム開始");
+            AudioMG.PlaySE("Swing");
+            Debug.Log("スペースキーが押された！クールタイム開始");
                 StartCoroutine(SpaceCooldown()); // クールタイム開始
         
         }
@@ -96,6 +99,7 @@ public class Bom : MonoBehaviour
                 Debug.Log("ストライクゾーンから出た！爆弾を削除します");
                 hpscript.hp--;
                 Destroy(gameObject);
+                AudioMG.PlaySE("Miss");
             }
             else
             {
