@@ -28,11 +28,11 @@ public class StageDirector : MonoBehaviour
     [Header("遷移先シーンの設定")]
     [SerializeField] string nextSceneName = default!;
     [SerializeField] ScreenFade fade_;
-    [SerializeField, Range(0, 4.0f)] float fadeTime_;
+    [SerializeField, Range(0, 3.0f)] float fadeTime_;
 
 
     [Header("ゲーム時間の設定")]
-    [Tooltip("プレイ開始の遅滞時間")]
+    [Tooltip("フェード終了後からプレイ開始までの遅滞時間")]
     [SerializeField] float startDelay = 2.5f;
     [Tooltip("ゲーム終了後からフェード開始までの遅滞時間")]
     [SerializeField] float endDelay = 2.5f;
