@@ -11,6 +11,6 @@ public class GetKillCount : MonoBehaviour
 
     void Update()
     {
-            kill_count_text.text = "Kill : " + ScoreMG.GetLatestScoreData();
-        }
+        kill_count_text.text = "Kill : " + ScoreMG.GetLatestScoreData();
+    }
 }
